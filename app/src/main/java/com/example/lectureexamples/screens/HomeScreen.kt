@@ -43,7 +43,6 @@ fun HomeScreen(navController: NavController) {
     ) {
         Column {
             TopBar()
-            Greeting()
             Text(
                 style = MaterialTheme.typography.h6,
                 text= "Movie List"
@@ -70,7 +69,6 @@ fun MyList(navController: NavController = rememberNavController(),
         }
     }
 }
-
 
 @Composable
 fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
@@ -172,56 +170,4 @@ fun WelcomeText(modifier: Modifier = Modifier, text: String = "default") {
         Text(text = text)
     }
 
-}
-
-@Preview
-@Composable
-fun Greeting() {
-    Column(modifier = Modifier.padding(16.dp)) {
-        var name by remember {
-            mutableStateOf("")
-        }
-
-        Text(text = "Hello ${name}!")
-
-        OutlinedTextField(
-            value = name,
-            onValueChange = {
-                name = it},
-            label = { Text("Name")}
-        )
-
-
-        /*
-        // step 2 - add a mutableStateOf to fire the event for recomposition
-
-       var name = mutableStateOf("")   // use a state holder to register changes
-        // var name  by mutableStateOf("")
-        Text(text = "Hello ${name.value}!")   // get value of state holder object
-
-        OutlinedTextField(
-            value = name.value,
-            onValueChange = { name.value = it },    // change its value accordingly
-            label = { Text("Name")}
-        )
-        */
-
-
-
-        /*
-        // step 3 - use remember
-        var name by remember {         // use remember to skip overwriting after first composition
-            mutableStateOf("")
-        }
-
-        Text(text = "Hello ${name}!")
-
-        OutlinedTextField(
-            value = name,
-            onValueChange = { name = it },
-            label = { Text("Name")}
-        )
-
-         */
-    }
 }
