@@ -1,5 +1,8 @@
 package com.example.lectureexamples.navigation
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -16,6 +19,7 @@ import androidx.navigation.navArgument
 import com.example.lectureexamples.models.getMovies
 import com.example.lectureexamples.screens.DetailScreen
 import com.example.lectureexamples.screens.HomeScreen
+import com.example.lectureexamples.screens.MovieRow
 
 @Composable
 fun Navigation() {
@@ -24,6 +28,9 @@ fun Navigation() {
     NavHost(navController = navController, startDestination = "home") {
         composable(route = "home") {
             HomeScreen(navController)
+        }
+        composable(route = "favorites") {
+            FavoriteScreen()
         }
 
         composable(
@@ -43,7 +50,7 @@ fun Navigation() {
 }
 
 @Composable
-fun TopBar() {
+fun TopBar(navController: NavController) {
     val showMenu = remember { mutableStateOf(false) }
 
     TopAppBar(
@@ -56,7 +63,7 @@ fun TopBar() {
                 expanded = showMenu.value,
                 onDismissRequest = { showMenu.value = false }
             ) {
-                DropdownMenuItem(onClick = { /* Handle favorites click */ }) {
+                DropdownMenuItem(onClick = { navController.navigate("favorites") }) {
                     Text("Favorites")
                 }
             }
@@ -74,4 +81,15 @@ fun DetailTopBar(navController: NavController, movieTitle: String) {
             }
         }
     )
+}
+@Composable
+fun FavoriteScreen() {
+    Column{
+        TopAppBar(title={Text(text="Favorites")})
+        LazyColumn{
+            items(getMovies()){ movie->
+                MovieRow(movie=movie)
+            }
+        }
+    }
 }

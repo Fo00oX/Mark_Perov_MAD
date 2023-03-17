@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController) {
         color = MaterialTheme.colors.background
     ) {
         Column {
-            TopBar()
+            TopBar(navController)
             MyList(navController)
         }
     }

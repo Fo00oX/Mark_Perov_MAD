@@ -30,7 +30,6 @@ fun DetailScreen(navController: NavController, movie: Movie) {
         Column {
             MovieRow(movie = movie)
             ImageList(movie.images)
-
         }
     }
 }
