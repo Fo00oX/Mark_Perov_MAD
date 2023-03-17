@@ -1,6 +1,11 @@
 package com.example.lectureexamples.navigation
 
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -27,4 +32,26 @@ fun Navigation(){
             DetailScreen(navController, movieId = backStackEntry.arguments?.getString("movieId"))
         }
     }
+}
+
+@Composable
+fun TopBar() {
+    val showMenu = remember { mutableStateOf(false) }
+
+    TopAppBar(
+        title = { Text("Movies") },
+        actions = {
+            IconButton(onClick = { showMenu.value = !showMenu.value }) {
+                Icon(Icons.Default.MoreVert, contentDescription = "Show menu")
+            }
+            DropdownMenu(
+                expanded = showMenu.value,
+                onDismissRequest = { showMenu.value = false }
+            ) {
+                DropdownMenuItem(onClick = { /* Handle favorites click */ }) {
+                    Text("Favorites")
+                }
+            }
+        }
+    )
 }
