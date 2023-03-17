@@ -5,7 +5,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -16,17 +15,17 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowUp
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.example.lectureexamples.models.Movie
 import com.example.lectureexamples.models.getMovies
@@ -43,10 +42,6 @@ fun HomeScreen(navController: NavController) {
     ) {
         Column {
             TopBar()
-            Text(
-                style = MaterialTheme.typography.h6,
-                text= "Movie List"
-            )
             MyList(navController)
         }
     }
@@ -157,18 +152,5 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
         }
     }
 }
-@Preview
-@Composable
-fun WelcomeText(modifier: Modifier = Modifier, text: String = "default") {
-    Row(
-        modifier = modifier
-            .padding(16.dp)
-            .background(Color.Blue)
-            .fillMaxWidth()
-    ) {
-        Text(modifier = modifier, text = "Hola")
-        Text(text = text)
-    }
 
-}
 
