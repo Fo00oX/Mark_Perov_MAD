@@ -93,7 +93,8 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
                 Image(
                     painter = rememberAsyncImagePainter(movie.images[0]),
                     contentDescription = movie.title,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
                 )
 
                 Box(
