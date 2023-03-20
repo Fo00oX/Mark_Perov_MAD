@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
+import com.example.lectureexamples.components.MovieCard
 import com.example.lectureexamples.models.Movie
 import com.example.lectureexamples.navigation.DetailTopBar
 
@@ -28,7 +29,7 @@ fun DetailScreen(navController: NavController, movie: Movie) {
         topBar = { DetailTopBar(navController, movie.title) }
     ) {
         Column {
-            MovieRow(movie = movie)
+            MovieCard(movie = movie)
             ImageList(movie.images)
         }
     }
