@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.lectureexamples.components.MovieCard
+import com.example.lectureexamples.components.SimpleAppBar
 import com.example.lectureexamples.models.Movie
 import com.example.lectureexamples.navigation.DetailTopBar
 
@@ -25,7 +26,13 @@ import com.example.lectureexamples.navigation.DetailTopBar
 @Composable
 fun DetailScreen(navController: NavController, movie: Movie) {
     Scaffold(
-        topBar = { DetailTopBar(navController, movie.title) }
+        topBar = {
+            SimpleAppBar(
+                title = movie.title,
+                onBackClick = { navController.navigateUp() },
+                onFavoritesClick = { navController.navigate("favorites") }
+            )
+        }
     ) {
         Column {
             MovieCard(movie = movie)
