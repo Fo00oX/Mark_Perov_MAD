@@ -74,14 +74,3 @@ fun TopBar(navController: NavController) {
     )
 }
 
-@Composable
-fun DetailTopBar(navController: NavController, movieTitle: String) {
-    TopAppBar(
-        title = { Text(movieTitle) },
-        navigationIcon = {
-            IconButton(onClick = { navController.navigateUp() }) {
-                Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
-            }
-        }
-    )
-}

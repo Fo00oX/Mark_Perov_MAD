@@ -31,7 +31,6 @@ fun HomeScreen(navController: NavController) {
     }
 }
 
-
 @Preview
 @Composable
 fun MovieList(navController: NavController = rememberNavController(),
