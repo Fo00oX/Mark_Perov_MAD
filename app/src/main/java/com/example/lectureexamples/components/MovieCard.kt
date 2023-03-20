@@ -89,6 +89,7 @@ fun MovieCard(movie: Movie, onItemClick: (String) -> Unit = {}) {
                     )
                 }
             }
+
             androidx.compose.animation.AnimatedVisibility(
                 visible =
                 showDetails.value
