@@ -72,7 +72,7 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
         targetValue = if (showDetails.value) 180f else 0f,
         animationSpec = tween(durationMillis = 300)
     )
-    val randomIndex = remember { Random.nextInt(movie.images.indices) }
+    //val randomIndex = remember { Random.nextInt(movie.images.indices) }
 
 
 
@@ -87,13 +87,14 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
         Column {
             Box(
                 modifier = Modifier
-                    .height(280.dp)
+                    .height(250.dp)
                     .fillMaxWidth()
             ) {
                 Image(
-                    painter = rememberAsyncImagePainter(movie.images[randomIndex]),
+                    painter = rememberAsyncImagePainter(movie.images[0]),
                     contentDescription = movie.title,
-                    contentScale = ContentScale.Fit
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
                 )
 
                 Box(
@@ -112,6 +113,8 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
                     )
                 }
             }
+
+
 
             Row(
                 modifier =
