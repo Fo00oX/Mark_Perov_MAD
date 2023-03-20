@@ -51,26 +51,3 @@ fun Navigation() {
         }
     }
 }
-
-@Composable
-fun TopBar(navController: NavController) {
-    val showMenu = remember { mutableStateOf(false) }
-
-    TopAppBar(
-        title = { Text("Movies") },
-        actions = {
-            IconButton(onClick = { showMenu.value = !showMenu.value }) {
-                Icon(Icons.Default.MoreVert, contentDescription = "Show menu")
-            }
-            DropdownMenu(
-                expanded = showMenu.value,
-                onDismissRequest = { showMenu.value = false }
-            ) {
-                DropdownMenuItem(onClick = { navController.navigate("favorites") }) {
-                    Text("Favorites")
-                }
-            }
-        }
-    )
-}
-
