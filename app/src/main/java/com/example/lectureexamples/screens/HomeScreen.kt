@@ -26,7 +26,7 @@ fun HomeScreen(navController: NavController) {
     ) {
         Column {
             TopBar(navController)
-            MyList(navController)
+            MovieList(navController)
         }
     }
 }
@@ -34,8 +34,8 @@ fun HomeScreen(navController: NavController) {
 
 @Preview
 @Composable
-fun MyList(navController: NavController = rememberNavController(),
-           movies: List<Movie> = getMovies()){
+fun MovieList(navController: NavController = rememberNavController(),
+              movies: List<Movie> = getMovies()){
     LazyColumn{
         items(movies) {movie ->
             MovieRow(

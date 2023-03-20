@@ -18,20 +18,26 @@ import com.example.lectureexamples.screens.DetailScreen
 import com.example.lectureexamples.screens.FavoriteScreen
 import com.example.lectureexamples.screens.HomeScreen
 
+sealed class Route(val route: String) {
+    object Home : Route("home")
+    object Favorites : Route("favorites")
+    object Detail : Route("detail/{movieId}")
+}
+
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "home") {
-        composable(route = "home") {
+    NavHost(navController = navController, startDestination = Route.Home.route) {
+        composable(route = Route.Home.route) {
             HomeScreen(navController)
         }
-        composable(route = "favorites") {
+        composable(route = Route.Favorites.route) {
             FavoriteScreen()
         }
 
         composable(
-            route = "detail/{movieId}",
+            route = Route.Detail.route,
             arguments = listOf(navArgument("movieId") { type = NavType.StringType })
         ) { backStackEntry ->
             val movieId = backStackEntry.arguments?.getString("movieId")
