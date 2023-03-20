@@ -54,7 +54,6 @@ fun HomeScreenBar(navController: NavController) {
     )
 }
 
-
 @Preview
 @Composable
 fun MovieList(navController: NavController = rememberNavController(),
@@ -77,7 +76,6 @@ fun MovieRow(movie: Movie, onItemClick: (String) -> Unit = {}) {
     remember { mutableStateOf(false) }
 
     MovieCard(movie, onItemClick)
-
 }
 
 
