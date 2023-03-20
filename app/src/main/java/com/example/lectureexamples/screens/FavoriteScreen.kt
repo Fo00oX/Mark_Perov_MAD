@@ -13,9 +13,7 @@ fun FavoriteScreen(navController: NavController) {
     Column{
         SimpleAppBar(
             title="Favorites",
-            onBackClick={navController.navigateUp()},
-            onFavoritesClick={},
-            isFavoriteScreen=true
+            onBackClick={navController.navigateUp()}
         )
 
         LazyColumn{

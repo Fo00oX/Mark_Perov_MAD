@@ -25,7 +25,6 @@ fun DetailScreen(navController: NavController, movie: Movie) {
             SimpleAppBar(
                 title = movie.title,
                 onBackClick = { navController.navigateUp() },
-                onFavoritesClick = { navController.navigate("favorites") }
             )
         }
     ) {
