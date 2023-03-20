@@ -1,12 +1,12 @@
-package com.example.lectureexamples.screens
+package com.example.movieapp.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
-import com.example.lectureexamples.components.SimpleAppBar
-import com.example.lectureexamples.models.getMovies
+import com.example.movieapp.components.SimpleAppBar
+import com.example.movieapp.models.getMovies
 
 @Composable
 fun FavoriteScreen(navController: NavController) {

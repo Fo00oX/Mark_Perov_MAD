@@ -1,4 +1,4 @@
-package com.example.lectureexamples.components
+package com.example.movieapp.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -22,7 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.lectureexamples.models.Movie
+import com.example.movieapp.models.Movie
 
 @Composable
 fun MovieCard(movie: Movie, onItemClick: (String) -> Unit = {}) {

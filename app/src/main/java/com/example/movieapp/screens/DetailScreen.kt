@@ -1,4 +1,4 @@
-package com.example.lectureexamples.screens
+package com.example.movieapp.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -13,9 +13,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import com.example.lectureexamples.components.MovieCard
-import com.example.lectureexamples.components.SimpleAppBar
-import com.example.lectureexamples.models.Movie
+import com.example.movieapp.components.MovieCard
+import com.example.movieapp.components.SimpleAppBar
+import com.example.movieapp.models.Movie
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable

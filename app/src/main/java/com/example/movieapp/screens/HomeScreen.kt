@@ -1,4 +1,4 @@
-package com.example.lectureexamples.screens
+package com.example.movieapp.screens
 
 import android.util.Log
 import androidx.compose.foundation.layout.Column
@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.example.lectureexamples.components.MovieCard
-import com.example.lectureexamples.models.Movie
-import com.example.lectureexamples.models.getMovies
+import com.example.movieapp.components.MovieCard
+import com.example.movieapp.models.Movie
+import com.example.movieapp.models.getMovies
 
 @Composable
 fun HomeScreen(navController: NavController) {

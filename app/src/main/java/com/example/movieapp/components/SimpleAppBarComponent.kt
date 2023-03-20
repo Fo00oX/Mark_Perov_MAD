@@ -1,4 +1,4 @@
-package com.example.lectureexamples.components
+package com.example.movieapp.components
 
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton

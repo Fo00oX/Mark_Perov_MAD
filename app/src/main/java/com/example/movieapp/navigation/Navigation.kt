@@ -1,4 +1,4 @@
-package com.example.lectureexamples.navigation
+package com.example.movieapp.navigation
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -7,10 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.lectureexamples.models.getMovies
-import com.example.lectureexamples.screens.DetailScreen
-import com.example.lectureexamples.screens.FavoriteScreen
-import com.example.lectureexamples.screens.HomeScreen
+import com.example.movieapp.models.getMovies
+import com.example.movieapp.screens.DetailScreen
+import com.example.movieapp.screens.FavoriteScreen
+import com.example.movieapp.screens.HomeScreen
 
 sealed class Route(val route: String) {
     object Home : Route("home")
