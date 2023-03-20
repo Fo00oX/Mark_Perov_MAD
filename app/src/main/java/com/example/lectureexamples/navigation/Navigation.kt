@@ -1,8 +1,5 @@
 package com.example.lectureexamples.navigation
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -18,8 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.lectureexamples.models.getMovies
 import com.example.lectureexamples.screens.DetailScreen
+import com.example.lectureexamples.screens.FavoriteList
 import com.example.lectureexamples.screens.HomeScreen
-import com.example.lectureexamples.screens.MovieRow
 
 @Composable
 fun Navigation() {
@@ -30,7 +27,7 @@ fun Navigation() {
             HomeScreen(navController)
         }
         composable(route = "favorites") {
-            FavoriteScreen()
+            FavoriteList()
         }
 
         composable(
@@ -81,15 +78,4 @@ fun DetailTopBar(navController: NavController, movieTitle: String) {
             }
         }
     )
-}
-@Composable
-fun FavoriteScreen() {
-    Column{
-        TopAppBar(title={Text(text="Favorites")})
-        LazyColumn{
-            items(getMovies()){ movie->
-                MovieRow(movie=movie)
-            }
-        }
-    }
 }
