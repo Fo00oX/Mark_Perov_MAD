@@ -13,18 +13,12 @@ import androidx.compose.runtime.Composable
 fun SimpleAppBar(
     title: String,
     onBackClick: () -> Unit,
-    onFavoritesClick: () -> Unit
 ) {
     TopAppBar(
         title = { Text(title) },
         navigationIcon = {
             IconButton(onClick = onBackClick) {
                 Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
-            }
-        },
-        actions = {
-            IconButton(onClick = onFavoritesClick) {
-                Icon(Icons.Default.FavoriteBorder, contentDescription = "Favorites")
             }
         }
     )
