@@ -45,7 +45,7 @@ fun ImageList(images: List<String>) {
                 Image(
                     painter = rememberImagePainter(image),
                     contentDescription = null,
-                    modifier = Modifier.size(128.dp),
+                    modifier = Modifier.size(250.dp),
                     contentScale = ContentScale.Crop
                 )
             }
