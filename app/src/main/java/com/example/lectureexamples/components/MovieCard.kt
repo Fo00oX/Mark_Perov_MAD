@@ -40,8 +40,9 @@ fun MovieCard(movie: Movie, onItemClick: (String) -> Unit = {}) {
     ) {
         Column {
             Box(
+                contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .height(280.dp)
+                    .height(250.dp)
                     .fillMaxWidth()
             ) {
                 Image(
@@ -69,23 +70,17 @@ fun MovieCard(movie: Movie, onItemClick: (String) -> Unit = {}) {
             }
 
             Row(
-                modifier =
-                Modifier.fillMaxWidth().padding(5.dp),
-                horizontalArrangement =
-                Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth().padding(5.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(movie.title, style =
-                MaterialTheme.typography.h6)
+                Text(movie.title, style = MaterialTheme.typography.h6)
 
-                IconButton(onClick =
-                { showDetails.value = !showDetails.value }) {
+                IconButton(onClick = { showDetails.value = !showDetails.value }) {
                     Icon(
-                        imageVector =
-                        Icons.Default.ArrowDropDown,
-                        contentDescription =
-                        "Show details",
-                        modifier =
-                        Modifier.rotate(iconRotation.value)
+                        imageVector = Icons.Filled.ArrowDropDown,
+                        contentDescription = "Show details",
+                        modifier = Modifier.rotate(iconRotation.value).size(36.dp)
                     )
                 }
             }
