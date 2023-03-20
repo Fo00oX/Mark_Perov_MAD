@@ -15,7 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.lectureexamples.models.getMovies
 import com.example.lectureexamples.screens.DetailScreen
-import com.example.lectureexamples.screens.FavoriteList
+import com.example.lectureexamples.screens.FavoriteScreen
 import com.example.lectureexamples.screens.HomeScreen
 
 @Composable
@@ -27,7 +27,7 @@ fun Navigation() {
             HomeScreen(navController)
         }
         composable(route = "favorites") {
-            FavoriteList()
+            FavoriteScreen()
         }
 
         composable(

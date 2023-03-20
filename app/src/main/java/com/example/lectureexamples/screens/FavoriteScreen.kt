@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import com.example.lectureexamples.models.getMovies
 
 @Composable
-fun FavoriteList() {
+fun FavoriteScreen() {
     Column{
         TopAppBar(title={ Text(text="Favorites") })
         LazyColumn{
