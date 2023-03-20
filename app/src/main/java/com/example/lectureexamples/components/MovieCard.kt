@@ -1,5 +1,6 @@
 package com.example.lectureexamples.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -18,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.lectureexamples.models.Movie
@@ -85,26 +87,17 @@ fun MovieCard(movie: Movie, onItemClick: (String) -> Unit = {}) {
                 }
             }
 
-            androidx.compose.animation.AnimatedVisibility(
-                visible =
-                showDetails.value
-            ) {
+            AnimatedVisibility(visible = showDetails.value) {
                 // Display movie details here
-                Column(
-                    modifier =
-                    Modifier.padding(8.dp)
-                ) {
-                    Text("Director: ${movie.director}")
-                    Spacer(
-                        modifier =
-                        Modifier.height(4.dp)
-                    )
-                    Text("Release year: ${movie.year}")
-                    Spacer(
-                        modifier =
-                        Modifier.height(4.dp)
-                    )
-                    Text("Plot: ${movie.plot}")
+                Column(modifier = Modifier.padding(8.dp)) {
+                    Text("Director: ", fontWeight = FontWeight.Bold)
+                    Text(movie.director)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text("Release year: ", fontWeight = FontWeight.Bold)
+                    Text(movie.year)
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text("Plot: ", fontWeight = FontWeight.Bold)
+                    Text(movie.plot)
                 }
             }
         }
