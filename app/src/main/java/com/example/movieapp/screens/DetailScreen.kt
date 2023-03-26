@@ -30,9 +30,13 @@ fun DetailScreen(navController: NavController, movie: Movie) {
     ) {
         Column {
             MovieCard(movie = movie)
-            ImageList(movie.images)
+            ImageList(dropFirstImage(movie.images))
         }
     }
+}
+
+fun dropFirstImage(images: List<String>): List<String> {
+    return images.drop(1)
 }
 
 @Composable
