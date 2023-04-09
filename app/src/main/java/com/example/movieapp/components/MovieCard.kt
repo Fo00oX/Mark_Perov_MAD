@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
@@ -49,7 +50,8 @@ fun MovieCard(
         modifier = Modifier
             .fillMaxWidth()
             .padding(5.dp)
-            .clickable { onItemClick(movie.id) },
+            .clickable { onItemClick(movie.id)
+                expandedState = !expandedState},
         shape = RoundedCornerShape(corner = CornerSize(15.dp)),
         elevation = 5.dp
     ) {
@@ -93,46 +95,40 @@ fun MovieCard(
                     )
                 }
             }
-
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(movie.title, style = MaterialTheme.typography.h6)
-            Icon(
-                imageVector = if (expandedState) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
-                contentDescription = "Show details",
+            Row(
                 modifier = Modifier
-                    .rotate(iconRotation.value).size(36.dp)
-                    .clickable(onClick = {
-                    expandedState = !expandedState
-                })
-            )
-        }
-    }
-    }
+                    .fillMaxWidth()
+                    .padding(15.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(movie.title, style = MaterialTheme.typography.h6)
+                Icon(
+                    imageVector = if (expandedState) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
+                    contentDescription = "Show details",
+                    modifier = Modifier
+                        .rotate(iconRotation.value).size(36.dp)
+                        .clickable(onClick = {
+                            expandedState = !expandedState
+                        })
+                )
+            }
 
-        AnimatedVisibility(visible = expandedState) {
-            Column(modifier = Modifier.padding(8.dp)) {
-
-                Text("Director: ", fontWeight = FontWeight.Bold)
-                Text(movie.director)
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text("Release Year: ", fontWeight = FontWeight.Bold)
-                Text(movie.year)
-
-                Spacer(modifier = Modifier.height(8.dp))
-
-                Text("Summary: ", fontWeight = FontWeight.Bold)
-                Text(movie.plot)
+            AnimatedVisibility(visible = expandedState) {
+                Column(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(MaterialTheme.colors.surface)
+                ) {
+                    Text("Director: ", fontWeight = FontWeight.Bold)
+                    Text(movie.director)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text("Release Date: ", fontWeight = FontWeight.Bold)
+                    Text(movie.year)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text("Summary: ", fontWeight = FontWeight.Bold)
+                    Text(movie.plot)
+                }
             }
         }
     }
-
-
-
+}
