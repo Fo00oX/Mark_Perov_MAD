@@ -56,7 +56,7 @@ fun MovieCard(
         Column {
             Box(
                 modifier = Modifier
-                    .height(150.dp)
+                    .height(200.dp)
                     .fillMaxWidth()
             ) {
                 val painter = rememberAsyncImagePainter(
@@ -105,31 +105,29 @@ fun MovieCard(
             Icon(
                 imageVector = if (expandedState) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
                 contentDescription = "Show details",
-                modifier = Modifier.clickable(onClick = {
+                modifier = Modifier
+                    .rotate(iconRotation.value).size(36.dp)
+                    .clickable(onClick = {
                     expandedState = !expandedState
                 })
             )
         }
     }
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(15.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-
-        }
     }
 
         AnimatedVisibility(visible = expandedState) {
             Column(modifier = Modifier.padding(8.dp)) {
+
                 Text("Director: ", fontWeight = FontWeight.Bold)
                 Text(movie.director)
-                Spacer(modifier = Modifier.height(8.dp)) // Add spacing between text elements
-                Text("Release Date: ", fontWeight = FontWeight.Bold)
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                Text("Release Year: ", fontWeight = FontWeight.Bold)
                 Text(movie.year)
-                Spacer(modifier = Modifier.height(8.dp)) // Add spacing between text elements
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Text("Summary: ", fontWeight = FontWeight.Bold)
                 Text(movie.plot)
             }
