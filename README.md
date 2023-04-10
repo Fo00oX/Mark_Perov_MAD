@@ -1,12 +1,14 @@
 # Mobile App Development (MAD) - Movie App
 
 This repository contains the source code for a simple movie app developed using Jetpack Compose in Android Studio as part of the Mobile App Development (MAD) course. The app allows users to browse a list of movies, view movie details, and mark movies as favorites.
-Features
+
+### Features
 
     Browse a list of movies
     View movie details, including images, plot, director, and actors
     Mark movies as favorites
     View a list of favorite movies
+    Add a new Movie with Costom Values
 
 ### Project Structure
 
