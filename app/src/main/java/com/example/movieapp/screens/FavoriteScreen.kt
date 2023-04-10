@@ -3,6 +3,8 @@ package com.example.movieapp.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -33,9 +35,11 @@ fun FavoriteScreen(
         Spacer(modifier = Modifier.size(5.dp))
         Divider(startIndent = 5.dp, thickness = 0.5.dp, color = Color.DarkGray)
 
-        for(movie: Movie in movieViewModel.favoritesList) {
-            MovieCard(movie, onFavoriteClick = { movieViewModel.updateFavorites(movie) }) {
-                navController.navigate("${Route.Detail.route}/${movie.id}")
+        LazyColumn {
+            items(movieViewModel.favoritesList) { movie ->
+                MovieCard(movie, onFavoriteClick = { movieViewModel.updateFavorites(movie) }) {
+                    navController.navigate("${Route.Detail.route}/${movie.id}")
+                }
             }
         }
     }
