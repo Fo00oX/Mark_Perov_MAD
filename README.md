@@ -50,19 +50,19 @@ Generate a random 4-digit number. The number must not contain repeating digits. 
 
 2.	DetailScreen 
 
-a)	Add a TopAppBar to your DetailScreen. It should show the selected movie’s title and an ArrowBack icon. When the ArrowBack icon is clicked, the app should navigate to the previous screen.
+    a)	Add a TopAppBar to your DetailScreen. It should show the selected movie’s title and an ArrowBack icon. When the ArrowBack icon is clicked, the app should navigate to the previous screen.
 
-b)	(Re)Use your MovieRow composable inside DetailScreen, to show selected movie information
+    b)	(Re)Use your MovieRow composable inside DetailScreen, to show selected movie information
 
-c)	Extend the DetailScreen with a LazyRow that shows all movie images inside scrollable Card composables
+    c)	Extend the DetailScreen with a LazyRow that shows all movie images inside scrollable Card composables
 
 3.	FavoriteScreen 
 Create a FavoriteScreen composable and add it to you Navigation. The app should navigate a user to FavoritesScreen if the DropDownMenuItem Favorites in the HomeScreen is clicked. It has a TopAppBar like DetailScreen before. FavoriteScreen renders a list of movies with MovieRow. The list of movies can be hardcoded for now
 
 4.	App Refactoring
-a)	Refactor your composables to be small and concise – split your code into different files an packages depending on their responsibilitites (eg. Screesn, widgets, models and so on)
-b)	Use a sealed class instead of simple strings in your navigation
-c)	Write a composable SimpleAppBar that can be reused in DetailScreen and FavoriteScreen    
+    a)	Refactor your composables to be small and concise – split your code into different files an packages depending on their responsibilitites (eg. Screesn, widgets, models and so on)
+    b)	Use a sealed class instead of simple strings in your navigation
+    c)	Write a composable SimpleAppBar that can be reused in DetailScreen and FavoriteScreen    
 
 ### LD_4 - Movie App
 
@@ -71,24 +71,23 @@ Note: Handling State in Lists of Objects is not trivial. To observe changes in o
 
 2.	Update FavoriteScreen to only show the user’s favorite movies.
 
-3.	Make sure that the state is injected into the composables from outside. MovieRow should not contain a reference to the ViewModel - therefore make use of callback functions (lambda expressions in the function parameters).
-Users can add a new Movie to the Movie collection (AddMovieScreen). You can use the provided Composable as a template. Note: the template requires an Enum Class for Genres.
+3.	Make sure that the state is injected into the composables from outside. MovieRow should not contain a reference to the ViewModel - therefore make use of callback functions (lambda expressions in the function parameters). Users can add a new Movie to the Movie collection (AddMovieScreen). You can use the provided Composable as a template. Note: the template requires an Enum Class for Genres.
 
 4. Extend your ViewModel with the following functionalities:
-a)	Validate user input (use onValueChange listeners to call ViewModel functions): 
--	title (String; not empty)
--	year (String; not empty)
--	genres (Enum Genre; at least 1 must be selected)
--	director (String, not empty)
--	actors (String, not empty)
--	plot (String)
--	rating (Float, not empty)
-b)	Show an error text if user input is not valid
-c)	“Add” Button:
--	Disabled by default
--	Enable it if all user input is valid
--	Add a movie to the collection onClick
-Note: Movie images are not required. Show a placeholder for newly added Movies in your MovieRow.
+    a)	Validate user input (use onValueChange listeners to call ViewModel functions): 
+        -	title (String; not empty)
+        -	year (String; not empty)
+        -	genres (Enum Genre; at least 1 must be selected)
+        -	director (String, not empty)
+        -	actors (String, not empty)
+        -	plot (String)
+        -	rating (Float, not empty)
+    b)	Show an error text if user input is not valid
+    c)	“Add” Button:
+        -	Disabled by default
+        -	Enable it if all user input is valid
+        -	Add a movie to the collection onClick
+            Note: Movie images are not required. Show a placeholder for newly added Movies in your MovieRow.
 
 
 
