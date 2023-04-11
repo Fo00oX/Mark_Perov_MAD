@@ -33,9 +33,12 @@ fun MovieCard(
     onFavoriteClick: (Movie) -> Unit = {},
     onItemClick: (String) -> Unit = {},
 ) {
+    /*
     var favoriteState by remember {
         mutableStateOf(movie.isFavorite)
     }
+
+     */
     var expandedState by remember {
         mutableStateOf(false)
     }
@@ -85,11 +88,11 @@ fun MovieCard(
                 ) {
                     Icon(
                         tint = MaterialTheme.colors.secondary,
-                        imageVector = if (favoriteState) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        imageVector = if (movie.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         contentDescription = "Add to favorites",
                         modifier = Modifier
                             .clickable {
-                                favoriteState = !favoriteState
+                                //favoriteState = !favoriteState
                                 onFavoriteClick(movie)
                             }
                     )

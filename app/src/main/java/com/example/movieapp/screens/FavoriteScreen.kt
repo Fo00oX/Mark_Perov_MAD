@@ -28,22 +28,23 @@ fun FavoriteScreen(
     movieViewModel: MovieViewModel,
     navController: NavHostController,
 ) {
-    val favoriteMovies = remember { mutableStateOf(movieViewModel.favoritesList) }
-
+    //val favoriteMovies = remember { mutableStateOf(movieViewModel.favoritesList) }
+    val favoriteMovies = movieViewModel.favoritesList
+    /*
     LaunchedEffect(movieViewModel.favoritesList) {
         favoriteMovies.value = movieViewModel.favoritesList
     }
+
+     */
 
     Column {
         SimpleAppBar(title = "My favorite Movies", navController = navController)
         Divider(startIndent = 5.dp, thickness = 0.5.dp, color = Color.DarkGray)
 
         LazyColumn {
-            items(favoriteMovies.value) { movie ->
+            items(favoriteMovies) { movie ->
                 MovieCard(movie, onFavoriteClick = {
                     movieViewModel.updateFavorites(movie)
-                    navController.popBackStack()
-                    navController.navigate(Route.Favorites.route)
                 }) {
                     navController.navigate("${Route.Detail.route}/${movie.id}")
                 }

@@ -23,7 +23,12 @@ class MovieViewModel : ViewModel() {
         get() = _favoritesList
 
     fun isValidMovie(title: String, year: String, genres: List<Genre>, director: String, actors: String, rating: Float): Boolean {
-        return (title.isNotBlank() && year.isNotBlank() && genres.isNotEmpty() && director.isNotBlank() && actors.isNotBlank() && rating > 0.0f)
+        return (title.isNotBlank()
+                && year.isNotBlank()
+                && genres.isNotEmpty()
+                && director.isNotBlank()
+                && actors.isNotBlank()
+                && rating > 0.0f)
     }
 
     fun addNewMovie(title: String, year: String, genres: List<Genre>, director: String, actors: String, plot: String, images: List<String>, rating: Float) {
