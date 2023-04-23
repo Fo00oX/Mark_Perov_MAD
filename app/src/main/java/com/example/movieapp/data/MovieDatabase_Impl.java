@@ -12,6 +12,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,18 +23,19 @@ import java.util.Set;
 public final class MovieDatabase_Impl extends MovieDatabase {
     private volatile MovieDao _movieDao;
 
+    @NonNull
     @Override
-    protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
+    protected SupportSQLiteOpenHelper createOpenHelper(@NonNull DatabaseConfiguration configuration) {
         final RoomOpenHelper _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
             @Override
-            public void createAllTables(SupportSQLiteDatabase _db) {
+            public void createAllTables(@NonNull SupportSQLiteDatabase _db) {
                 _db.execSQL("CREATE TABLE IF NOT EXISTS `Movie` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `year` TEXT NOT NULL, `genre` TEXT NOT NULL, `director` TEXT NOT NULL, `actors` TEXT NOT NULL, `plot` TEXT NOT NULL, `images` TEXT NOT NULL, `rating` REAL NOT NULL, `isFavorite` INTEGER NOT NULL)");
                 _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
                 _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '251360329b26f4fe1443a2e0b75e3f97')");
             }
 
             @Override
-            public void dropAllTables(SupportSQLiteDatabase _db) {
+            public void dropAllTables(@NonNull SupportSQLiteDatabase _db) {
                 _db.execSQL("DROP TABLE IF EXISTS `Movie`");
                 if (mCallbacks != null) {
                     for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
@@ -43,7 +45,7 @@ public final class MovieDatabase_Impl extends MovieDatabase {
             }
 
             @Override
-            public void onCreate(SupportSQLiteDatabase _db) {
+            public void onCreate(@NonNull SupportSQLiteDatabase _db) {
                 if (mCallbacks != null) {
                     for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
                         mCallbacks.get(_i).onCreate(_db);
@@ -52,7 +54,7 @@ public final class MovieDatabase_Impl extends MovieDatabase {
             }
 
             @Override
-            public void onOpen(SupportSQLiteDatabase _db) {
+            public void onOpen(@NonNull SupportSQLiteDatabase _db) {
                 mDatabase = _db;
                 internalInitInvalidationTracker(_db);
                 if (mCallbacks != null) {
@@ -63,17 +65,18 @@ public final class MovieDatabase_Impl extends MovieDatabase {
             }
 
             @Override
-            public void onPreMigrate(SupportSQLiteDatabase _db) {
+            public void onPreMigrate(@NonNull SupportSQLiteDatabase _db) {
                 DBUtil.dropFtsSyncTriggers(_db);
             }
 
             @Override
-            public void onPostMigrate(SupportSQLiteDatabase _db) {
+            public void onPostMigrate(@NonNull SupportSQLiteDatabase _db) {
             }
 
+            @NonNull
             @Override
-            public RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-                final HashMap<String, TableInfo.Column> _columnsMovie = new HashMap<String, TableInfo.Column>(10);
+            public RoomOpenHelper.ValidationResult onValidateSchema(@NonNull SupportSQLiteDatabase _db) {
+                final HashMap<String, TableInfo.Column> _columnsMovie = new HashMap<>(10);
                 _columnsMovie.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
                 _columnsMovie.put("title", new TableInfo.Column("title", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
                 _columnsMovie.put("year", new TableInfo.Column("year", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -84,8 +87,8 @@ public final class MovieDatabase_Impl extends MovieDatabase {
                 _columnsMovie.put("images", new TableInfo.Column("images", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
                 _columnsMovie.put("rating", new TableInfo.Column("rating", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
                 _columnsMovie.put("isFavorite", new TableInfo.Column("isFavorite", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-                final HashSet<TableInfo.ForeignKey> _foreignKeysMovie = new HashSet<TableInfo.ForeignKey>(0);
-                final HashSet<TableInfo.Index> _indicesMovie = new HashSet<TableInfo.Index>(0);
+                final HashSet<TableInfo.ForeignKey> _foreignKeysMovie = new HashSet<>(0);
+                final HashSet<TableInfo.Index> _indicesMovie = new HashSet<>(0);
                 final TableInfo _infoMovie = new TableInfo("Movie", _columnsMovie, _foreignKeysMovie, _indicesMovie);
                 final TableInfo _existingMovie = TableInfo.read(_db, "Movie");
                 if (! _infoMovie.equals(_existingMovie)) {
@@ -100,14 +103,14 @@ public final class MovieDatabase_Impl extends MovieDatabase {
                 .name(configuration.name)
                 .callback(_openCallback)
                 .build();
-        final SupportSQLiteOpenHelper _helper = configuration.sqliteOpenHelperFactory.create(_sqliteConfig);
-        return _helper;
+        return configuration.sqliteOpenHelperFactory.create(_sqliteConfig);
     }
 
+    @NonNull
     @Override
     protected InvalidationTracker createInvalidationTracker() {
-        final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
-        HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
+        final HashMap<String, String> _shadowTablesMap = new HashMap<>(0);
+        HashMap<String, Set<String>> _viewTables = new HashMap<>(0);
         return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "Movie");
     }
 
@@ -128,25 +131,28 @@ public final class MovieDatabase_Impl extends MovieDatabase {
         }
     }
 
+    @NonNull
     @Override
     protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
-        final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
+        final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<>();
         _typeConvertersMap.put(MovieDao.class, MovieDao_Impl.getRequiredConverters());
         return _typeConvertersMap;
     }
 
+    @NonNull
     @Override
     public Set<Class<? extends AutoMigrationSpec>> getRequiredAutoMigrationSpecs() {
-        final HashSet<Class<? extends AutoMigrationSpec>> _autoMigrationSpecsSet = new HashSet<Class<? extends AutoMigrationSpec>>();
-        return _autoMigrationSpecsSet;
+        return new HashSet<>();
     }
 
+    @NonNull
     @Override
     public List<Migration> getAutoMigrations(
             @NonNull Map<Class<? extends AutoMigrationSpec>, AutoMigrationSpec> autoMigrationSpecsMap) {
-        return Arrays.asList();
+        return Collections.emptyList();
     }
 
+    @NonNull
     @Override
     public MovieDao MovieDao() {
         if (_movieDao != null) {

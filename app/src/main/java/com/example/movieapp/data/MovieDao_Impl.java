@@ -2,6 +2,7 @@ package com.example.movieapp.data;
 
 import android.database.Cursor;
 
+import androidx.annotation.NonNull;
 import androidx.room.CoroutinesRoom;
 import androidx.room.EntityDeletionOrUpdateAdapter;
 import androidx.room.EntityInsertionAdapter;
@@ -41,6 +42,7 @@ public final class MovieDao_Impl implements MovieDao {
     public MovieDao_Impl(RoomDatabase __db) {
         this.__db = __db;
         this.__insertionAdapterOfMovie = new EntityInsertionAdapter<Movie>(__db) {
+            @NonNull
             @Override
             public String createQuery() {
                 return "INSERT OR REPLACE INTO `Movie` (`id`,`title`,`year`,`genre`,`director`,`actors`,`plot`,`images`,`rating`,`isFavorite`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?,?)";
@@ -49,103 +51,61 @@ public final class MovieDao_Impl implements MovieDao {
             @Override
             public void bind(SupportSQLiteStatement stmt, Movie value) {
                 stmt.bindLong(1, value.getId());
-                if (value.getTitle() == null) {
-                    stmt.bindNull(2);
-                } else {
-                    stmt.bindString(2, value.getTitle());
-                }
-                if (value.getYear() == null) {
-                    stmt.bindNull(3);
-                } else {
-                    stmt.bindString(3, value.getYear());
-                }
-                if (value.getGenre() == null) {
-                    stmt.bindNull(4);
-                } else {
-                    stmt.bindString(4, value.getGenre());
-                }
-                if (value.getDirector() == null) {
-                    stmt.bindNull(5);
-                } else {
-                    stmt.bindString(5, value.getDirector());
-                }
-                if (value.getActors() == null) {
-                    stmt.bindNull(6);
-                } else {
-                    stmt.bindString(6, value.getActors());
-                }
-                if (value.getPlot() == null) {
-                    stmt.bindNull(7);
-                } else {
-                    stmt.bindString(7, value.getPlot());
-                }
+                value.getTitle();
+                stmt.bindString(2, value.getTitle());
+                value.getYear();
+                stmt.bindString(3, value.getYear());
+                value.getGenre();
+                stmt.bindString(4, value.getGenre());
+                value.getDirector();
+                stmt.bindString(5, value.getDirector());
+                value.getActors();
+                stmt.bindString(6, value.getActors());
+                value.getPlot();
+                stmt.bindString(7, value.getPlot());
                 final String _tmp = __customConverters.listToString(value.getImages());
-                if (_tmp == null) {
-                    stmt.bindNull(8);
-                } else {
-                    stmt.bindString(8, _tmp);
-                }
+                stmt.bindString(8, _tmp);
                 stmt.bindDouble(9, value.getRating());
                 final int _tmp_1 = value.isFavorite() ? 1 : 0;
                 stmt.bindLong(10, _tmp_1);
             }
         };
         this.__deletionAdapterOfMovie = new EntityDeletionOrUpdateAdapter<Movie>(__db) {
+            @NonNull
             @Override
             public String createQuery() {
                 return "DELETE FROM `Movie` WHERE `id` = ?";
             }
 
             @Override
-            public void bind(SupportSQLiteStatement stmt, Movie value) {
+            public void bind(@NonNull SupportSQLiteStatement stmt, Movie value) {
                 stmt.bindLong(1, value.getId());
             }
         };
         this.__updateAdapterOfMovie = new EntityDeletionOrUpdateAdapter<Movie>(__db) {
+            @NonNull
             @Override
             public String createQuery() {
                 return "UPDATE OR ABORT `Movie` SET `id` = ?,`title` = ?,`year` = ?,`genre` = ?,`director` = ?,`actors` = ?,`plot` = ?,`images` = ?,`rating` = ?,`isFavorite` = ? WHERE `id` = ?";
             }
 
             @Override
-            public void bind(SupportSQLiteStatement stmt, Movie value) {
+            public void bind(@NonNull SupportSQLiteStatement stmt, Movie value) {
                 stmt.bindLong(1, value.getId());
-                if (value.getTitle() == null) {
-                    stmt.bindNull(2);
-                } else {
-                    stmt.bindString(2, value.getTitle());
-                }
-                if (value.getYear() == null) {
-                    stmt.bindNull(3);
-                } else {
-                    stmt.bindString(3, value.getYear());
-                }
-                if (value.getGenre() == null) {
-                    stmt.bindNull(4);
-                } else {
-                    stmt.bindString(4, value.getGenre());
-                }
-                if (value.getDirector() == null) {
-                    stmt.bindNull(5);
-                } else {
-                    stmt.bindString(5, value.getDirector());
-                }
-                if (value.getActors() == null) {
-                    stmt.bindNull(6);
-                } else {
-                    stmt.bindString(6, value.getActors());
-                }
-                if (value.getPlot() == null) {
-                    stmt.bindNull(7);
-                } else {
-                    stmt.bindString(7, value.getPlot());
-                }
+                value.getTitle();
+                stmt.bindString(2, value.getTitle());
+                value.getYear();
+                stmt.bindString(3, value.getYear());
+                value.getGenre();
+                stmt.bindString(4, value.getGenre());
+                value.getDirector();
+                stmt.bindString(5, value.getDirector());
+                value.getActors();
+                stmt.bindString(6, value.getActors());
+                value.getPlot();
+                stmt.bindString(7, value.getPlot());
                 final String _tmp = __customConverters.listToString(value.getImages());
-                if (_tmp == null) {
-                    stmt.bindNull(8);
-                } else {
-                    stmt.bindString(8, _tmp);
-                }
+                stmt.bindString(8, _tmp);
                 stmt.bindDouble(9, value.getRating());
                 final int _tmp_1 = value.isFavorite() ? 1 : 0;
                 stmt.bindLong(10, _tmp_1);
@@ -153,16 +113,16 @@ public final class MovieDao_Impl implements MovieDao {
             }
         };
         this.__preparedStmtOfDeleteAll = new SharedSQLiteStatement(__db) {
+            @NonNull
             @Override
             public String createQuery() {
-                final String _query = "DELETE FROM movie";
-                return _query;
+                return "DELETE FROM movie";
             }
         };
     }
 
     @Override
-    public Object add(final Movie movie, final Continuation<? super Unit> continuation) {
+    public Object add(@NonNull final Movie movie, final Continuation<? super Unit> continuation) {
         return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
             @Override
             public Unit call() throws Exception {
@@ -179,7 +139,7 @@ public final class MovieDao_Impl implements MovieDao {
     }
 
     @Override
-    public Object delete(final Movie movie, final Continuation<? super Unit> continuation) {
+    public Object delete(@NonNull final Movie movie, @NonNull final Continuation<? super Unit> continuation) {
         return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
             @Override
             public Unit call() throws Exception {
@@ -196,10 +156,10 @@ public final class MovieDao_Impl implements MovieDao {
     }
 
     @Override
-    public Object update(final Movie movie, final Continuation<? super Unit> continuation) {
+    public Object update(@NonNull final Movie movie, @NonNull final Continuation<? super Unit> continuation) {
         return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
             @Override
-            public Unit call() throws Exception {
+            public Unit call() {
                 __db.beginTransaction();
                 try {
                     __updateAdapterOfMovie.handle(movie);
@@ -213,7 +173,7 @@ public final class MovieDao_Impl implements MovieDao {
     }
 
     @Override
-    public Object deleteAll(final Continuation<? super Unit> continuation) {
+    public Object deleteAll(@NonNull final Continuation<? super Unit> continuation) {
         return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
             @Override
             public Unit call() throws Exception {
@@ -231,6 +191,7 @@ public final class MovieDao_Impl implements MovieDao {
         }, continuation);
     }
 
+    @NonNull
     @Override
     public Flow<List<Movie>> getAllMovies() {
         final String _sql = "SELECT * FROM movie";
@@ -238,8 +199,7 @@ public final class MovieDao_Impl implements MovieDao {
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<List<Movie>>() {
             @Override
             public List<Movie> call() throws Exception {
-                final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-                try {
+                try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
                     final int _cursorIndexOfYear = CursorUtil.getColumnIndexOrThrow(_cursor, "year");
@@ -251,7 +211,7 @@ public final class MovieDao_Impl implements MovieDao {
                     final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
                     final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
                     final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
-                    while(_cursor.moveToNext()) {
+                    while (_cursor.moveToNext()) {
                         final Movie _item;
                         final int _tmpId;
                         _tmpId = _cursor.getInt(_cursorIndexOfId);
@@ -298,6 +258,7 @@ public final class MovieDao_Impl implements MovieDao {
                         } else {
                             _tmp = _cursor.getString(_cursorIndexOfImages);
                         }
+                        assert _tmp != null;
                         _tmpImages = __customConverters.stringToList(_tmp);
                         final float _tmpRating;
                         _tmpRating = _cursor.getFloat(_cursorIndexOfRating);
@@ -305,12 +266,14 @@ public final class MovieDao_Impl implements MovieDao {
                         final int _tmp_1;
                         _tmp_1 = _cursor.getInt(_cursorIndexOfIsFavorite);
                         _tmpIsFavorite = _tmp_1 != 0;
-                        _item = new Movie(_tmpId,_tmpTitle,_tmpYear,_tmpGenre,_tmpDirector,_tmpActors,_tmpPlot,_tmpImages,_tmpRating,_tmpIsFavorite);
+                        assert _tmpTitle != null;
+                        assert _tmpYear != null;
+                        assert _tmpGenre != null;
+                        assert _tmpDirector != null;
+                        _item = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                         _result.add(_item);
                     }
                     return _result;
-                } finally {
-                    _cursor.close();
                 }
             }
 
@@ -321,6 +284,7 @@ public final class MovieDao_Impl implements MovieDao {
         });
     }
 
+    @NonNull
     @Override
     public Flow<List<Movie>> getAllFavorites() {
         final String _sql = "SELECT * FROM movie WHERE isFavorite = true";
@@ -328,8 +292,7 @@ public final class MovieDao_Impl implements MovieDao {
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<List<Movie>>() {
             @Override
             public List<Movie> call() throws Exception {
-                final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-                try {
+                try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
                     final int _cursorIndexOfYear = CursorUtil.getColumnIndexOrThrow(_cursor, "year");
@@ -341,7 +304,7 @@ public final class MovieDao_Impl implements MovieDao {
                     final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
                     final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
                     final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
-                    while(_cursor.moveToNext()) {
+                    while (_cursor.moveToNext()) {
                         final Movie _item;
                         final int _tmpId;
                         _tmpId = _cursor.getInt(_cursorIndexOfId);
@@ -388,6 +351,7 @@ public final class MovieDao_Impl implements MovieDao {
                         } else {
                             _tmp = _cursor.getString(_cursorIndexOfImages);
                         }
+                        assert _tmp != null;
                         _tmpImages = __customConverters.stringToList(_tmp);
                         final float _tmpRating;
                         _tmpRating = _cursor.getFloat(_cursorIndexOfRating);
@@ -395,12 +359,14 @@ public final class MovieDao_Impl implements MovieDao {
                         final int _tmp_1;
                         _tmp_1 = _cursor.getInt(_cursorIndexOfIsFavorite);
                         _tmpIsFavorite = _tmp_1 != 0;
-                        _item = new Movie(_tmpId,_tmpTitle,_tmpYear,_tmpGenre,_tmpDirector,_tmpActors,_tmpPlot,_tmpImages,_tmpRating,_tmpIsFavorite);
+                        assert _tmpTitle != null;
+                        assert _tmpYear != null;
+                        assert _tmpGenre != null;
+                        assert _tmpDirector != null;
+                        _item = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                         _result.add(_item);
                     }
                     return _result;
-                } finally {
-                    _cursor.close();
                 }
             }
 
@@ -411,6 +377,7 @@ public final class MovieDao_Impl implements MovieDao {
         });
     }
 
+    @NonNull
     @Override
     public Flow<Movie> getMovieById(final int movieId) {
         final String _sql = "SELECT * FROM movie WHERE id=?";
@@ -420,8 +387,7 @@ public final class MovieDao_Impl implements MovieDao {
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<Movie>() {
             @Override
             public Movie call() throws Exception {
-                final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
-                try {
+                try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
                     final int _cursorIndexOfYear = CursorUtil.getColumnIndexOrThrow(_cursor, "year");
@@ -433,7 +399,7 @@ public final class MovieDao_Impl implements MovieDao {
                     final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
                     final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
                     final Movie _result;
-                    if(_cursor.moveToFirst()) {
+                    if (_cursor.moveToFirst()) {
                         final int _tmpId;
                         _tmpId = _cursor.getInt(_cursorIndexOfId);
                         final String _tmpTitle;
@@ -479,6 +445,7 @@ public final class MovieDao_Impl implements MovieDao {
                         } else {
                             _tmp = _cursor.getString(_cursorIndexOfImages);
                         }
+                        assert _tmp != null;
                         _tmpImages = __customConverters.stringToList(_tmp);
                         final float _tmpRating;
                         _tmpRating = _cursor.getFloat(_cursorIndexOfRating);
@@ -486,13 +453,15 @@ public final class MovieDao_Impl implements MovieDao {
                         final int _tmp_1;
                         _tmp_1 = _cursor.getInt(_cursorIndexOfIsFavorite);
                         _tmpIsFavorite = _tmp_1 != 0;
-                        _result = new Movie(_tmpId,_tmpTitle,_tmpYear,_tmpGenre,_tmpDirector,_tmpActors,_tmpPlot,_tmpImages,_tmpRating,_tmpIsFavorite);
+                        assert _tmpTitle != null;
+                        assert _tmpYear != null;
+                        assert _tmpGenre != null;
+                        assert _tmpDirector != null;
+                        _result = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                     } else {
                         _result = null;
                     }
                     return _result;
-                } finally {
-                    _cursor.close();
                 }
             }
 
