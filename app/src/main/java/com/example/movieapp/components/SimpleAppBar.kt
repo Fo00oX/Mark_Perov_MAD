@@ -40,10 +40,3 @@ fun SimpleAppBar(title: String = "Movies", navController: NavHostController) {
         }
     }
 }
-
-@Composable
-fun ReseedButton(onClick: () -> Unit) {
-    Button(onClick = onClick) {
-        Text(text = "Reseed Database")
-    }
-}
