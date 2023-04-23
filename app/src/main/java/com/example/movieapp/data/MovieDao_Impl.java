@@ -25,7 +25,7 @@ import kotlin.Unit;
 import kotlin.coroutines.Continuation;
 import kotlinx.coroutines.flow.Flow;
 
-@SuppressWarnings({"unchecked", "deprecation"})
+@SuppressWarnings({"deprecation"})
 public final class MovieDao_Impl implements MovieDao {
     private final RoomDatabase __db;
 
@@ -122,71 +122,59 @@ public final class MovieDao_Impl implements MovieDao {
     }
 
     @Override
-    public Object add(@NonNull final Movie movie, final Continuation<? super Unit> continuation) {
-        return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
-            @Override
-            public Unit call() throws Exception {
-                __db.beginTransaction();
-                try {
-                    __insertionAdapterOfMovie.insert(movie);
-                    __db.setTransactionSuccessful();
-                    return Unit.INSTANCE;
-                } finally {
-                    __db.endTransaction();
-                }
+    public Object add(@NonNull final Movie movie, @NonNull final Continuation<? super Unit> continuation) {
+        return CoroutinesRoom.execute(__db, true, () -> {
+            __db.beginTransaction();
+            try {
+                __insertionAdapterOfMovie.insert(movie);
+                __db.setTransactionSuccessful();
+                return Unit.INSTANCE;
+            } finally {
+                __db.endTransaction();
             }
         }, continuation);
     }
 
     @Override
     public Object delete(@NonNull final Movie movie, @NonNull final Continuation<? super Unit> continuation) {
-        return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
-            @Override
-            public Unit call() throws Exception {
-                __db.beginTransaction();
-                try {
-                    __deletionAdapterOfMovie.handle(movie);
-                    __db.setTransactionSuccessful();
-                    return Unit.INSTANCE;
-                } finally {
-                    __db.endTransaction();
-                }
+        return CoroutinesRoom.execute(__db, true, () -> {
+            __db.beginTransaction();
+            try {
+                __deletionAdapterOfMovie.handle(movie);
+                __db.setTransactionSuccessful();
+                return Unit.INSTANCE;
+            } finally {
+                __db.endTransaction();
             }
         }, continuation);
     }
 
     @Override
     public Object update(@NonNull final Movie movie, @NonNull final Continuation<? super Unit> continuation) {
-        return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
-            @Override
-            public Unit call() {
-                __db.beginTransaction();
-                try {
-                    __updateAdapterOfMovie.handle(movie);
-                    __db.setTransactionSuccessful();
-                    return Unit.INSTANCE;
-                } finally {
-                    __db.endTransaction();
-                }
+        return CoroutinesRoom.execute(__db, true, () -> {
+            __db.beginTransaction();
+            try {
+                __updateAdapterOfMovie.handle(movie);
+                __db.setTransactionSuccessful();
+                return Unit.INSTANCE;
+            } finally {
+                __db.endTransaction();
             }
         }, continuation);
     }
 
     @Override
     public Object deleteAll(@NonNull final Continuation<? super Unit> continuation) {
-        return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
-            @Override
-            public Unit call() throws Exception {
-                final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAll.acquire();
-                __db.beginTransaction();
-                try {
-                    _stmt.executeUpdateDelete();
-                    __db.setTransactionSuccessful();
-                    return Unit.INSTANCE;
-                } finally {
-                    __db.endTransaction();
-                    __preparedStmtOfDeleteAll.release(_stmt);
-                }
+        return CoroutinesRoom.execute(__db, true, () -> {
+            final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAll.acquire();
+            __db.beginTransaction();
+            try {
+                _stmt.executeUpdateDelete();
+                __db.setTransactionSuccessful();
+                return Unit.INSTANCE;
+            } finally {
+                __db.endTransaction();
+                __preparedStmtOfDeleteAll.release(_stmt);
             }
         }, continuation);
     }
@@ -198,7 +186,7 @@ public final class MovieDao_Impl implements MovieDao {
         final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<List<Movie>>() {
             @Override
-            public List<Movie> call() throws Exception {
+            public List<Movie> call() {
                 try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
@@ -210,7 +198,7 @@ public final class MovieDao_Impl implements MovieDao {
                     final int _cursorIndexOfImages = CursorUtil.getColumnIndexOrThrow(_cursor, "images");
                     final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
                     final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
-                    final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
+                    final List<Movie> _result = new ArrayList<>(_cursor.getCount());
                     while (_cursor.moveToNext()) {
                         final Movie _item;
                         final int _tmpId;
@@ -270,6 +258,8 @@ public final class MovieDao_Impl implements MovieDao {
                         assert _tmpYear != null;
                         assert _tmpGenre != null;
                         assert _tmpDirector != null;
+                        assert _tmpActors != null;
+                        assert _tmpPlot != null;
                         _item = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                         _result.add(_item);
                     }
@@ -291,7 +281,7 @@ public final class MovieDao_Impl implements MovieDao {
         final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<List<Movie>>() {
             @Override
-            public List<Movie> call() throws Exception {
+            public List<Movie> call() {
                 try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
@@ -303,7 +293,7 @@ public final class MovieDao_Impl implements MovieDao {
                     final int _cursorIndexOfImages = CursorUtil.getColumnIndexOrThrow(_cursor, "images");
                     final int _cursorIndexOfRating = CursorUtil.getColumnIndexOrThrow(_cursor, "rating");
                     final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
-                    final List<Movie> _result = new ArrayList<Movie>(_cursor.getCount());
+                    final List<Movie> _result = new ArrayList<>(_cursor.getCount());
                     while (_cursor.moveToNext()) {
                         final Movie _item;
                         final int _tmpId;
@@ -363,6 +353,8 @@ public final class MovieDao_Impl implements MovieDao {
                         assert _tmpYear != null;
                         assert _tmpGenre != null;
                         assert _tmpDirector != null;
+                        assert _tmpActors != null;
+                        assert _tmpPlot != null;
                         _item = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                         _result.add(_item);
                     }
@@ -386,7 +378,7 @@ public final class MovieDao_Impl implements MovieDao {
         _statement.bindLong(_argIndex, movieId);
         return CoroutinesRoom.createFlow(__db, false, new String[]{"movie"}, new Callable<Movie>() {
             @Override
-            public Movie call() throws Exception {
+            public Movie call() {
                 try (Cursor _cursor = DBUtil.query(__db, _statement, false, null)) {
                     final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
                     final int _cursorIndexOfTitle = CursorUtil.getColumnIndexOrThrow(_cursor, "title");
@@ -457,6 +449,8 @@ public final class MovieDao_Impl implements MovieDao {
                         assert _tmpYear != null;
                         assert _tmpGenre != null;
                         assert _tmpDirector != null;
+                        assert _tmpActors != null;
+                        assert _tmpPlot != null;
                         _result = new Movie(_tmpId, _tmpTitle, _tmpYear, _tmpGenre, _tmpDirector, _tmpActors, _tmpPlot, _tmpImages, _tmpRating, _tmpIsFavorite);
                     } else {
                         _result = null;
