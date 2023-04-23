@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -13,7 +12,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.data.MovieDatabase
 import com.example.movieapp.data.MovieDatabaseCallback
-
 import com.example.movieapp.navigation.SetupNavigation
 import com.example.movieapp.ui.theme.MovieAppTheme
 import com.example.movieapp.utils.InjectorUtils
