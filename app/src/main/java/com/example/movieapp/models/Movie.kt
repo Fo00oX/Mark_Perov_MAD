@@ -1,5 +1,8 @@
 package com.example.movieapp.models
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -15,5 +18,7 @@ data class Movie(
     var plot: String = "",
     var images: List<String> = listOf(""),
     var rating: Float = 0.0f,
-    var isFavorite: Boolean = false,
-)
+    var initialIsFav: Boolean = false
+){
+    var isFavorite by mutableStateOf(initialIsFav)
+}
