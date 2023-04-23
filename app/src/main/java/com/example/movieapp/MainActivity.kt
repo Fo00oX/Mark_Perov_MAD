@@ -10,14 +10,19 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.movieapp.data.MovieDatabase
+import com.example.movieapp.data.MovieDatabaseCallback
 
-import com.example.movieapp.navigation.SetupNavGraph
+import com.example.movieapp.navigation.SetupNavigation
 import com.example.movieapp.ui.theme.MovieAppTheme
 import com.example.movieapp.utils.InjectorUtils
 import com.example.movieapp.views.AddMovieViewModel
 import com.example.movieapp.views.DetailsViewModel
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
@@ -43,10 +48,19 @@ class MainActivity : ComponentActivity() {
                     addMovieViewModel = viewModel(factory = InjectorUtils.provideAddMovieViewModelFactory(LocalContext.current))
 
                     Column {
-                        SetupNavGraph(movieViewModel, favoritesViewModel, detailsViewModel, addMovieViewModel, navController)
+                        SetupNavigation(movieViewModel, favoritesViewModel, detailsViewModel, addMovieViewModel, navController)
                     }
                 }
             }
+        }
+        //reseedDatabase()
+    }
+    fun reseedDatabase() {
+        val movieDatabase = MovieDatabase.getDatabase(this)
+        val movieDatabaseCallback = MovieDatabaseCallback(this)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            movieDatabaseCallback.seedDatabase(movieDatabase)
         }
     }
 }

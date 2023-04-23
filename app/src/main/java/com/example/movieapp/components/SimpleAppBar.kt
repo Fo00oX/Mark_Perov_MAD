@@ -3,6 +3,7 @@ package com.example.movieapp.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,5 +38,12 @@ fun SimpleAppBar(title: String = "Movies", navController: NavHostController) {
             Spacer(modifier = Modifier.width(5.dp))
             Text(title, style = MaterialTheme.typography.h6, color = Color.White)
         }
+    }
+}
+
+@Composable
+fun ReseedButton(onClick: () -> Unit) {
+    Button(onClick = onClick) {
+        Text(text = "Reseed Database")
     }
 }

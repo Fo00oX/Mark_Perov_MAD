@@ -23,7 +23,7 @@ class MovieDatabaseCallback(private val context: Context) : RoomDatabase.Callbac
         }
     }
 
-    private suspend fun seedDatabase(database: MovieDatabase) {
+    suspend fun seedDatabase(database: MovieDatabase) {
         movieDao = database.MovieDao()
         repository = MovieRepository(movieDao)
 
@@ -163,6 +163,7 @@ class MovieDatabaseCallback(private val context: Context) : RoomDatabase.Callbac
                 rating = 9.5f
             )
         )
-        initialMovieList.forEach { _ -> repository.add(Movie()) }
+        //initialMovieList.forEach { repository.delete(it)}
+        initialMovieList.forEach { repository.add(it)  }
     }
 }

@@ -15,7 +15,7 @@ import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 
 @Composable
-fun SetupNavGraph(
+fun SetupNavigation(
     movieViewModel: MovieViewModel,
     favoritesViewModel: FavoritesViewModel,
     detailsViewModel: DetailsViewModel,
