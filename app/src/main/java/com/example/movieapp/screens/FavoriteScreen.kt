@@ -3,6 +3,8 @@ package com.example.movieapp.screens
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -43,25 +45,25 @@ fun FavoriteScreen(
         Spacer(modifier = Modifier.size(5.dp))
         Divider(startIndent = 5.dp, thickness = 0.5.dp, color = Color.DarkGray)
 
-        for(movie: Movie in favoritesState) {
-            MovieCard(movie,
-                onFavoriteClick = {
-                    coroutineScope.launch {
-                        favoritesViewModel.updateFavorites(movie)
+        LazyColumn {
+            items(favoritesState) { movie ->
+                MovieCard(movie,
+                    onFavoriteClick = {
+                        coroutineScope.launch {
+                            favoritesViewModel.updateFavorites(movie)
+                        }
+                    },
+                    onDeleteClick = {
+                        coroutineScope.launch {
+                            movieViewModel.deleteMovie(movie)
+                        }
+                    },
+                    onItemClick = { movieId ->
+                        navController.navigate("${Screen.DetailScreen.route}/$movieId")
                     }
-                },
-                onDeleteClick = {
-                    coroutineScope.launch {
-                        movieViewModel.deleteMovie(movie)
-                    }
-                },
-                onItemClick = { movieId ->
-                    navController.navigate("${Screen.DetailScreen.route}/$movieId")
-                }
-            )
+                )
+            }
         }
     }
 }
-
-
 
