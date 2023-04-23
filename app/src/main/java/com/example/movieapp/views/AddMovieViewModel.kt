@@ -20,7 +20,13 @@ class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
     )
 
     fun isValidMovie(title: String, year: String, genres: String, director: String, actors: String, rating: Float): Boolean {
-        return (title.isNotBlank() && year.isNotBlank() && genres.isNotBlank() && director.isNotBlank() && actors.isNotBlank() && rating > 0.0f)
+        return (title.isNotBlank()
+                && year.isNotBlank()
+                && genres.isNotBlank()
+                && director.isNotBlank()
+                && actors.isNotBlank()
+                && rating > 0.0f
+                )
     }
 
     suspend fun addMovie(movie: Movie) {

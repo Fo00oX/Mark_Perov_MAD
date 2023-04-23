@@ -20,9 +20,9 @@ import com.example.movieapp.screens.Screen
 @Composable
 fun SimpleAppBar(title: String = "Movies", navController: NavHostController) {
     Row(modifier = Modifier
-        .background(Color.Blue)
+        .background(Color.Black)
         .fillMaxWidth()
-        .padding(10.dp),
+        .padding(11.dp),
         horizontalArrangement = Arrangement.Start,
     ){
         Row {

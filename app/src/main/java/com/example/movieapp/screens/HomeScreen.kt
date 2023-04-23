@@ -3,7 +3,8 @@ package com.example.movieapp.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -17,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.components.MovieCard
-
 import com.example.movieapp.models.Movie
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
@@ -50,9 +50,9 @@ fun HomeScreenAppBar(
     val coroutineScope = rememberCoroutineScope()
 
     Row(modifier = Modifier
-        .background(Color.Blue)
+        .background(Color.Black)
         .fillMaxWidth()
-        .padding(10.dp),
+        .padding(11.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
     ){
         Text(title, style = MaterialTheme.typography.h6, color = Color.White)

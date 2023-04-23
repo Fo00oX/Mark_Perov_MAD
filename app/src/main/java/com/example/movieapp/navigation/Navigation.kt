@@ -34,7 +34,12 @@ fun SetupNavigation(
             })
         ) { backStackEntry ->
             backStackEntry.arguments?.getInt("movieId")
-                ?.let { DetailScreen(movie = detailsViewModel.getMovieById(movieId = it), movieViewModel = movieViewModel, favoritesViewModel = favoritesViewModel, navController = navController) }
+                ?.let { DetailScreen(
+                    movie = detailsViewModel.getMovieById(movieId = it),
+                    movieViewModel = movieViewModel,
+                    favoritesViewModel = favoritesViewModel,
+                    navController = navController)
+                }
         }
 
         composable(Screen.FavoriteScreen.route) {

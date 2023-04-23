@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
             MovieAppTheme {
 
                 Surface(
-                    color = MaterialTheme.colors.background
+                    color = Color.Black
                 ) {
                     navController = rememberNavController()
 

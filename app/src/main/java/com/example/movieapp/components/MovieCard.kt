@@ -90,7 +90,11 @@ fun MovieCard(
                     Row(horizontalArrangement = Arrangement.SpaceBetween) {
                         Icon(
                             tint = MaterialTheme.colors.secondary,
-                            imageVector = if (favoriteState) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                            imageVector =
+                            if
+                                    (favoriteState) Icons.Default.Favorite
+                            else
+                                Icons.Default.FavoriteBorder,
                             contentDescription = "Add to favorites",
                             modifier = Modifier
                                 .clickable {
@@ -119,7 +123,11 @@ fun MovieCard(
             ) {
                 Text(movie.title, style = MaterialTheme.typography.h6)
                 Icon(
-                    imageVector = if (expandedState) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
+                    imageVector =
+                    if
+                            (expandedState) Icons.Default.KeyboardArrowDown
+                    else
+                        Icons.Default.KeyboardArrowUp,
                     contentDescription = "Show details",
                     modifier = Modifier
                         .rotate(iconRotation.value).size(36.dp)
