@@ -16,19 +16,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.R
-import com.example.movieapp.components.MovieViewModel
 import com.example.movieapp.components.SimpleAppBar
 import com.example.movieapp.models.Genre
-import com.example.movieapp.navigation.Route
+import com.example.movieapp.models.Movie
+import com.example.movieapp.views.AddMovieViewModel
+import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AddMovieScreen(
     modifier: Modifier = Modifier,
-    movieViewModel: MovieViewModel,
+    addMovieViewModel: AddMovieViewModel,
     navController: NavHostController,
 ) {
+    val coroutineScope = rememberCoroutineScope()
     Column {
         SimpleAppBar(title = "Add a Movie", navController = navController)
         Surface(
@@ -64,7 +66,7 @@ fun AddMovieScreen(
                 var genreItems by remember {
                     mutableStateOf(
                         genres.map { genre ->
-                            MovieViewModel.ListItemSelectable(
+                            AddMovieViewModel.ListItemSelectable(
                                 title = genre,
                                 isSelected = false
                             )
@@ -247,13 +249,15 @@ fun AddMovieScreen(
                     )
                 }
 
-                isEnabledSaveButton = movieViewModel.isValidMovie(title, year, genreItems.filter { x -> x.isSelected }.map { x -> x.title }, director, actors, rating.toFloatOrNull() ?: 0.0f)
+                isEnabledSaveButton = addMovieViewModel.isValidMovie(title, year, genreItems.filter { x -> x.isSelected }.map { it.title }.toString(), director, actors, rating.toFloatOrNull() ?: 0.0f)
 
                 Button(
                     enabled = isEnabledSaveButton,
                     onClick = {
-                        movieViewModel.addNewMovie(title, year, genreItems.filter { x -> x.isSelected }.map { x -> x.title }, director, actors, plot, listOf("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"), rating.toFloatOrNull() ?: 0.0f)
-                        navController.navigate(Route.Home.route)
+                        coroutineScope.launch {
+                            addMovieViewModel.addMovie(Movie(title = title, year = year, genre = genreItems.filter { x -> x.isSelected }.map { it.title }.toString(), director = director, actors = actors, plot = plot, images = listOf("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"), rating = rating.toFloatOrNull() ?: 0.0f))
+                        }
+                        navController.navigate(Screen.HomeScreen.route)
                     }) {
                     Text(text = stringResource(R.string.add))
                 }
@@ -261,5 +265,3 @@ fun AddMovieScreen(
         }
     }
 }
-
-
