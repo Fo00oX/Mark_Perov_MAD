@@ -48,7 +48,8 @@ fun DetailScreen(
                     coroutineScope.launch {
                         movieViewModel.deleteMovie(movie)
                     }
-                }
+                },
+                showDeleteIcon = false
             )
             Spacer(modifier = Modifier.size(5.dp))
             Divider(startIndent = 5.dp, thickness = 0.5.dp, color = Color.DarkGray)
