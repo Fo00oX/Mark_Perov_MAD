@@ -33,6 +33,7 @@ fun MovieCard(
     onFavoriteClick: (Movie) -> Unit = {},
     onItemClick: (String) -> Unit = {},
     onDeleteClick: (Movie) -> Unit = {},
+    showDeleteIcon: Boolean = true
 ) {
     var expandedState by remember {
         mutableStateOf(false)
@@ -102,16 +103,18 @@ fun MovieCard(
                                     onFavoriteClick(movie)
                                 }
                         )
-                        Icon(
-                            tint = Color.White,
-                            imageVector = Icons.Default.Delete,
-                            contentDescription = "Delete Movie",
-                            modifier = Modifier
-                                .clickable {
-                                    deleteState = !deleteState
-                                    onDeleteClick(movie)
-                                }
-                        )
+                        if (showDeleteIcon) {
+                            Icon(
+                                tint = Color.White,
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Delete Movie",
+                                modifier = Modifier
+                                    .clickable {
+                                        deleteState = !deleteState
+                                        onDeleteClick(movie)
+                                    }
+                            )
+                        }
                     }
                 }
             }
