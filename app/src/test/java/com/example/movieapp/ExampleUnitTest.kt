@@ -1,4 +1,4 @@
-package com.example.lectureexamples
+package com.example.movieapp
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
