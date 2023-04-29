@@ -22,7 +22,6 @@ import com.example.movieapp.models.Movie
 import com.example.movieapp.views.AddMovieViewModel
 import kotlinx.coroutines.launch
 
-
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AddMovieScreen(
