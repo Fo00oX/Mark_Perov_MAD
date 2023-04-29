@@ -11,14 +11,12 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -34,29 +32,28 @@ fun MovieCard(
     movie: Movie = defaultMovie,
     onFavoriteClick: (Movie) -> Unit = {},
     onItemClick: (String) -> Unit = {},
+    onDeleteClick: (Movie) -> Unit = {},
+    showDeleteIcon: Boolean = true
 ) {
-    /*
-    var favoriteState by remember {
-        mutableStateOf(movie.isFavorite)
-    }
-
-     */
     var expandedState by remember {
         mutableStateOf(false)
     }
-    val showDetails = remember { mutableStateOf(false) }
+    val showDetails = remember { mutableStateOf(false)
+    }
     val iconRotation = animateFloatAsState(
         targetValue = if (showDetails.value) 180f else 0f,
         animationSpec = tween(durationMillis = 300)
     )
-
-
+    var deleteState by remember {
+        mutableStateOf(false)
+    }
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(5.dp)
-            .clickable { onItemClick(movie.id)
-                expandedState = !expandedState},
+            .clickable {
+                onItemClick(movie.id.toString())
+            },
         shape = RoundedCornerShape(corner = CornerSize(15.dp)),
         elevation = 5.dp
     ) {
@@ -76,6 +73,9 @@ fun MovieCard(
                 if (painterState is AsyncImagePainter.State.Loading) {
                     CircularProgressIndicator()
                 }
+                var favoriteState by remember {
+                    mutableStateOf(movie.isFavorite)
+                }
                 Image(
                     modifier = Modifier.fillMaxWidth(),
                     painter = painter,
@@ -88,16 +88,34 @@ fun MovieCard(
                         .padding(10.dp),
                     contentAlignment = Alignment.TopEnd
                 ) {
-                    Icon(
-                        tint = MaterialTheme.colors.secondary,
-                        imageVector = if (movie.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                        contentDescription = "Add to favorites",
-                        modifier = Modifier
-                            .clickable {
-                                //favoriteState = !favoriteState
-                                onFavoriteClick(movie)
-                            }
-                    )
+                    Row(horizontalArrangement = Arrangement.SpaceBetween) {
+                        Icon(
+                            tint = MaterialTheme.colors.secondary,
+                            imageVector =
+                            if
+                                    (favoriteState) Icons.Default.Favorite
+                            else
+                                Icons.Default.FavoriteBorder,
+                            contentDescription = "Add to favorites",
+                            modifier = Modifier
+                                .clickable {
+                                    favoriteState = !favoriteState
+                                    onFavoriteClick(movie)
+                                }
+                        )
+                        if (showDeleteIcon) {
+                            Icon(
+                                tint = Color.White,
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Delete Movie",
+                                modifier = Modifier
+                                    .clickable {
+                                        deleteState = !deleteState
+                                        onDeleteClick(movie)
+                                    }
+                            )
+                        }
+                    }
                 }
             }
             Row(
@@ -108,7 +126,11 @@ fun MovieCard(
             ) {
                 Text(movie.title, style = MaterialTheme.typography.h6)
                 Icon(
-                    imageVector = if (expandedState) Icons.Default.KeyboardArrowDown else Icons.Default.KeyboardArrowUp,
+                    imageVector =
+                    if
+                            (expandedState) Icons.Default.KeyboardArrowDown
+                    else
+                        Icons.Default.KeyboardArrowUp,
                     contentDescription = "Show details",
                     modifier = Modifier
                         .rotate(iconRotation.value).size(36.dp)

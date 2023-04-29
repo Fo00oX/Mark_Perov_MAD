@@ -7,41 +7,47 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.movieapp.components.MovieViewModel
-import com.example.movieapp.screens.AddMovieScreen
-import com.example.movieapp.screens.DetailScreen
-import com.example.movieapp.screens.FavoriteScreen
-import com.example.movieapp.screens.HomeScreen
 
-sealed class Route(val route: String) {
-    object Home : Route("home")
-    object Favorites : Route("favorites")
-    object Detail : Route("detail/{movieId}")
-    object AddMovie : Route( "add_movie_screen")
-}
+import com.example.movieapp.screens.*
+import com.example.movieapp.views.AddMovieViewModel
+import com.example.movieapp.views.DetailsViewModel
+import com.example.movieapp.views.FavoritesViewModel
+import com.example.movieapp.views.MovieViewModel
 
 @Composable
-fun Navigation(
+fun SetupNavigation(
     movieViewModel: MovieViewModel,
+    favoritesViewModel: FavoritesViewModel,
+    detailsViewModel: DetailsViewModel,
+    addMovieViewModel: AddMovieViewModel,
     navController: NavHostController,
-    ) {
-        NavHost(navController = navController, Route.Home.route) {
-            composable(Route.Home.route) {
-                HomeScreen(movieViewModel, navController)
-            }
-            composable(
-                "${Route.Detail.route}/{movieId}",
-                arguments = listOf(navArgument("movieId") {
-                    type = NavType.StringType
-                })
-            ) { backStackEntry ->
-                DetailScreen(movieId = backStackEntry.arguments?.getString("movieId"), movieViewModel, navController)
-            }
-            composable(Route.Favorites.route) {
-                FavoriteScreen(movieViewModel, navController)
-            }
-            composable(Route.AddMovie.route) {
-                AddMovieScreen(Modifier, movieViewModel, navController)
-            }
+) {
+    NavHost(navController = navController, Screen.HomeScreen.route) {
+        composable(Screen.HomeScreen.route) {
+            HomeScreen(movieViewModel, favoritesViewModel, navController)
+        }
+
+        composable(
+            "${Screen.DetailScreen.route}/{movieId}",
+            arguments = listOf(navArgument("movieId") {
+                type = NavType.IntType
+            })
+        ) { backStackEntry ->
+            backStackEntry.arguments?.getInt("movieId")
+                ?.let { DetailScreen(
+                    movie = detailsViewModel.getMovieById(movieId = it),
+                    movieViewModel = movieViewModel,
+                    favoritesViewModel = favoritesViewModel,
+                    navController = navController)
+                }
+        }
+
+        composable(Screen.FavoriteScreen.route) {
+            FavoriteScreen(movieViewModel, favoritesViewModel, navController)
+        }
+
+        composable(Screen.AddMovieScreen.route) {
+            AddMovieScreen(Modifier, addMovieViewModel, navController)
         }
     }
+}
