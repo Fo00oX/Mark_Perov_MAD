@@ -171,7 +171,7 @@ fun AddMovieScreen(
                                 }
                             }
                         ) {
-                            Text(text = genreItem.title.name)
+                            Text(text = genreItem.title.name, color = Color.Black)
                         }
                     }
                 }
