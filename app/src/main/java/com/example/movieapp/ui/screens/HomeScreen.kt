@@ -41,8 +41,21 @@ import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch
 
-val defaultMovie = Movie(title = "Avatar", year = "2009", genre = "Action, Adventure, Fantasy", director = "James Cameron", actors = "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang", plot = "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.", images = listOf("https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg", "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"), rating = 7.9f)
-
+val defaultMovie = Movie(
+    title = "Avatar",
+    year = "2009",
+    genre = "Action, Adventure, Fantasy",
+    director = "James Cameron",
+    actors = "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
+    plot = "A paraplegic marine dispatched to the moon Pandora on a unique " +
+            "mission becomes torn between following his orders and protecting " +
+            "the world he feels is his home.",
+    images = listOf("https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+        "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"),
+    rating = 7.9f)
 
 @Composable
 fun HomeScreen(
@@ -75,7 +88,9 @@ fun HomeScreenAppBar(
     ){
         Text(title, style = MaterialTheme.typography.h6, color = Color.White)
         Column {
-            Icon(imageVector = Icons.Default.MoreVert, contentDescription = "Settings", tint = Color.White,
+            Icon(imageVector = Icons.Default.MoreVert,
+                contentDescription = "Settings",
+                tint = Color.White,
                 modifier = Modifier.clickable(onClick = {
                     optionsState = !optionsState
                 }),
@@ -89,14 +104,16 @@ fun HomeScreenAppBar(
                 DropdownMenuItem(onClick = {
                     navController.navigate(ScreenRoute.AddMovieScreenRoute.route)
                 }) {
-                    Icon(imageVector = Icons.Default.Add, contentDescription = "Add Movie")
+                    Icon(imageVector = Icons.Default.Add,
+                        contentDescription = "Add Movie")
                     Spacer(modifier = Modifier.width(5.dp))
                     Text("Add Movie")
                 }
                 DropdownMenuItem(onClick = {
                     navController.navigate(ScreenRoute.FavoriteScreenRoute.route)
                 }) {
-                    Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorites")
+                    Icon(imageVector = Icons.Default.Favorite,
+                        contentDescription = "Favorites")
                     Spacer(modifier = Modifier.width(5.dp))
                     Text("Favorites")
                 }
@@ -105,7 +122,8 @@ fun HomeScreenAppBar(
                         movieViewModel.deleteAllMovies()
                     }
                 }) {
-                    Icon(imageVector = Icons.Default.Delete, contentDescription = "Delete")
+                    Icon(imageVector = Icons.Default.Delete,
+                        contentDescription = "Delete")
                     Spacer(modifier = Modifier.width(5.dp))
                     Text("Clear Movies")
                 }

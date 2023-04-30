@@ -14,21 +14,29 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
     private val _movies = MutableStateFlow(listOf<Movie>())
     val movies: StateFlow<List<Movie>> = _movies.asStateFlow()
 
-    init {
+    private fun fetchMovies() {
         viewModelScope.launch {
-            repository.getAllMovies().collect{ movieList ->
-                if(!movieList.isNullOrEmpty()) {
+            repository.getAllMovies().collect { movieList ->
+                if (!movieList.isNullOrEmpty()) {
                     _movies.value = movieList
+                } else {
+                    _movies.value = listOf()
                 }
             }
         }
     }
 
+    init {
+        fetchMovies()
+    }
+
     suspend fun deleteMovie(movie: Movie) {
         repository.delete(movie)
+        fetchMovies()
     }
 
     suspend fun deleteAllMovies() {
         repository.deleteAll()
+        fetchMovies()
     }
 }
