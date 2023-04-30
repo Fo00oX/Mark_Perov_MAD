@@ -11,5 +11,4 @@ enum class Genre {
     HISTORY,
     SCIFI,
     THRILLER,;
-    val isSelected: Boolean = false
 }

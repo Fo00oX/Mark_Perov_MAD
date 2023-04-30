@@ -19,7 +19,12 @@ class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
         val isSelected: Boolean
     )
 
-    fun isValidMovie(title: String, year: String, genres: String, director: String, actors: String, rating: Float): Boolean {
+    fun isValidMovie(title: String,
+                     year: String,
+                     genres: String,
+                     director: String,
+                     actors: String,
+                     rating: Float): Boolean {
         return (title.isNotBlank()
                 && year.isNotBlank()
                 && genres.isNotBlank()

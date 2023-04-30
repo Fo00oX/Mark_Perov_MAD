@@ -52,7 +52,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-        reseedDatabase()
+        //reseedDatabase()
     }
     private fun reseedDatabase() {
         val movieDatabase = MovieDatabase.getDatabase(this)

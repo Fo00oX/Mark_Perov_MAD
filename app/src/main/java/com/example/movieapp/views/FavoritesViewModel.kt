@@ -6,14 +6,11 @@ import com.example.movieapp.data.models.Movie
 import com.example.movieapp.data.repositories.MovieRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(private val repository: MovieRepository) : ViewModel() {
 
     private val _favorites = MutableStateFlow(listOf<Movie>())
-    val favorites: StateFlow<List<Movie>> = _favorites.asStateFlow()
 
     init {
         viewModelScope.launch {
