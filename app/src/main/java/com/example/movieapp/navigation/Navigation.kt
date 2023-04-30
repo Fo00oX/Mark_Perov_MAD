@@ -8,7 +8,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 
-import com.example.movieapp.screens.*
+import com.example.movieapp.ui.theme.screens.AddMovieScreen
+import com.example.movieapp.ui.theme.screens.DetailScreen
+import com.example.movieapp.ui.theme.screens.FavoriteScreen
+import com.example.movieapp.ui.theme.screens.HomeScreen
 import com.example.movieapp.views.AddMovieViewModel
 import com.example.movieapp.views.DetailsViewModel
 import com.example.movieapp.views.FavoritesViewModel

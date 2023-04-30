@@ -13,7 +13,7 @@ import androidx.room.util.CursorUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.db.SupportSQLiteStatement;
 
-import com.example.movieapp.models.Movie;
+import com.example.movieapp.data.models.Movie;
 import com.example.movieapp.utils.CustomConverters;
 
 import java.util.ArrayList;

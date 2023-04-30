@@ -1,4 +1,4 @@
-package com.example.movieapp.screens
+package com.example.movieapp.ui.theme.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -20,9 +20,9 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.movieapp.components.MovieCard
-import com.example.movieapp.components.SimpleAppBar
-import com.example.movieapp.models.Movie
+import com.example.movieapp.ui.components.MovieCard
+import com.example.movieapp.ui.components.SimpleAppBar
+import com.example.movieapp.data.models.Movie
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.example.movieapp.components
+package com.example.movieapp.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.movieapp.models.Movie
-import com.example.movieapp.screens.defaultMovie
+import com.example.movieapp.data.models.Movie
+import com.example.movieapp.ui.theme.screens.defaultMovie
 
 @Composable
 fun MovieCard(
@@ -144,7 +144,6 @@ fun MovieCard(
                 Column(
                     modifier = Modifier
                         .padding(8.dp)
-                        .background(MaterialTheme.colors.surface)
                 ) {
                     Text("Director: ", fontWeight = FontWeight.Bold)
                     Text(movie.director)

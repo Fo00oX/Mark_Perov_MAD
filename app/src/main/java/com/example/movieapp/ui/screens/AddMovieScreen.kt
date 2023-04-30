@@ -1,4 +1,4 @@
-package com.example.movieapp.screens
+package com.example.movieapp.ui.theme.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -16,9 +16,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.R
-import com.example.movieapp.components.SimpleAppBar
-import com.example.movieapp.models.Genre
-import com.example.movieapp.models.Movie
+import com.example.movieapp.ui.components.SimpleAppBar
+import com.example.movieapp.data.models.Genre
+import com.example.movieapp.data.models.Movie
+import com.example.movieapp.navigation.Screen
 import com.example.movieapp.views.AddMovieViewModel
 import kotlinx.coroutines.launch
 
@@ -248,13 +249,31 @@ fun AddMovieScreen(
                     )
                 }
 
-                isEnabledSaveButton = addMovieViewModel.isValidMovie(title, year, genreItems.filter { x -> x.isSelected }.map { it.title }.toString(), director, actors, rating.toFloatOrNull() ?: 0.0f)
+                isEnabledSaveButton = addMovieViewModel.isValidMovie(
+                    title,
+                    year,
+                    genreItems.filter { x -> x.isSelected }.map { it.title }.toString(),
+                    director,
+                    actors,
+                    rating.toFloatOrNull() ?: 0.0f
+                )
 
                 Button(
                     enabled = isEnabledSaveButton,
                     onClick = {
                         coroutineScope.launch {
-                            addMovieViewModel.addMovie(Movie(title = title, year = year, genre = genreItems.filter { x -> x.isSelected }.map { it.title }.toString(), director = director, actors = actors, plot = plot, images = listOf("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"), rating = rating.toFloatOrNull() ?: 0.0f))
+                            addMovieViewModel.addMovie(
+                                Movie(
+                                title = title,
+                                year = year,
+                                genre = genreItems.filter { x -> x.isSelected }.map { it.title }.toString(),
+                                director = director,
+                                actors = actors,
+                                plot = plot,
+                                images = listOf("https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"),
+                                rating = rating.toFloatOrNull() ?: 0.0f
+                            )
+                            )
                         }
                         navController.navigate(Screen.HomeScreen.route)
                     }) {

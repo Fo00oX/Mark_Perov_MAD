@@ -1,7 +1,7 @@
-package com.example.movieapp.repositories
+package com.example.movieapp.data.repositories
 
 import com.example.movieapp.data.MovieDao
-import com.example.movieapp.models.Movie
+import com.example.movieapp.data.models.Movie
 
 
 class MovieRepository(private val movieDao: MovieDao) {

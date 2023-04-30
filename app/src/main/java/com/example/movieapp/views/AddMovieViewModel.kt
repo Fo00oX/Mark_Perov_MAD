@@ -2,9 +2,9 @@ package com.example.movieapp.views
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.movieapp.models.Genre
-import com.example.movieapp.models.Movie
-import com.example.movieapp.repositories.MovieRepository
+import com.example.movieapp.data.models.Genre
+import com.example.movieapp.data.models.Movie
+import com.example.movieapp.data.repositories.MovieRepository
 import kotlinx.coroutines.launch
 
 class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
@@ -29,7 +29,7 @@ class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
                 )
     }
 
-    suspend fun addMovie(movie: Movie) {
+    suspend fun addMovie(movie: Movie) { //can be blocking, only from a coroutine callable
         repository.add(movie)
     }
 }

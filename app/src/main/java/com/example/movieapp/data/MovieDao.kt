@@ -1,7 +1,7 @@
 package com.example.movieapp.data
 
 import androidx.room.*
-import com.example.movieapp.models.Movie
+import com.example.movieapp.data.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 @Dao

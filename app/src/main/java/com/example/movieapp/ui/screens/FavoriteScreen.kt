@@ -1,4 +1,4 @@
-package com.example.movieapp.screens
+package com.example.movieapp.ui.theme.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,8 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.movieapp.components.MovieCard
-import com.example.movieapp.components.SimpleAppBar
+import com.example.movieapp.ui.components.MovieCard
+import com.example.movieapp.ui.components.SimpleAppBar
+import com.example.movieapp.navigation.Screen
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch

@@ -3,8 +3,8 @@ package com.example.movieapp.data
 import android.content.Context
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.movieapp.models.Movie
-import com.example.movieapp.repositories.MovieRepository
+import com.example.movieapp.data.models.Movie
+import com.example.movieapp.data.repositories.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

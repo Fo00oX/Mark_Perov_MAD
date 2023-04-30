@@ -1,4 +1,4 @@
-package com.example.movieapp.models
+package com.example.movieapp.data.models
 
 enum class Genre {
     ACTION,

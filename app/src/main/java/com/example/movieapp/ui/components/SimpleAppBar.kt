@@ -1,4 +1,4 @@
-package com.example.movieapp.components
+package com.example.movieapp.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.movieapp.screens.Screen
+import com.example.movieapp.navigation.Screen
 
 
 @Composable

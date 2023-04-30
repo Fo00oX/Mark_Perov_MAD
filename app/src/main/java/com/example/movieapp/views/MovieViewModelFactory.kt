@@ -2,12 +2,13 @@ package com.example.movieapp.views
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.movieapp.repositories.MovieRepository
+import com.example.movieapp.data.repositories.MovieRepository
 
-class MovieViewModelFactory(private val repository: MovieRepository): ViewModelProvider.Factory {
+class MovieViewModelFactory(private val movieRepository: MovieRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(MovieViewModel::class.java)) {
-            return MovieViewModel(repository) as T
+            @Suppress("UNCHECKED_CAST")
+            return MovieViewModel(movieRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
