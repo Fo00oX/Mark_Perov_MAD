@@ -19,7 +19,7 @@ import com.example.movieapp.R
 import com.example.movieapp.ui.components.SimpleAppBar
 import com.example.movieapp.data.models.Genre
 import com.example.movieapp.data.models.Movie
-import com.example.movieapp.navigation.Screen
+import com.example.movieapp.navigation.ScreenRoute
 import com.example.movieapp.views.AddMovieViewModel
 import kotlinx.coroutines.launch
 
@@ -275,7 +275,7 @@ fun AddMovieScreen(
                             )
                             )
                         }
-                        navController.navigate(Screen.HomeScreen.route)
+                        navController.navigate(ScreenRoute.HomeScreenRoute.route)
                     }) {
                     Text(text = stringResource(R.string.add))
                 }

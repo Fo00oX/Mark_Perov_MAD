@@ -25,13 +25,13 @@ fun SetupNavigation(
     addMovieViewModel: AddMovieViewModel,
     navController: NavHostController,
 ) {
-    NavHost(navController = navController, Screen.HomeScreen.route) {
-        composable(Screen.HomeScreen.route) {
+    NavHost(navController = navController, ScreenRoute.HomeScreenRoute.route) {
+        composable(ScreenRoute.HomeScreenRoute.route) {
             HomeScreen(movieViewModel, favoritesViewModel, navController)
         }
 
         composable(
-            "${Screen.DetailScreen.route}/{movieId}",
+            "${ScreenRoute.DetailScreenRoute.route}/{movieId}",
             arguments = listOf(navArgument("movieId") {
                 type = NavType.IntType
             })
@@ -45,11 +45,11 @@ fun SetupNavigation(
                 }
         }
 
-        composable(Screen.FavoriteScreen.route) {
+        composable(ScreenRoute.FavoriteScreenRoute.route) {
             FavoriteScreen(movieViewModel, favoritesViewModel, navController)
         }
 
-        composable(Screen.AddMovieScreen.route) {
+        composable(ScreenRoute.AddMovieScreenRoute.route) {
             AddMovieScreen(Modifier, addMovieViewModel, navController)
         }
     }

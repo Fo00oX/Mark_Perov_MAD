@@ -19,7 +19,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.ui.components.MovieCard
 import com.example.movieapp.data.models.Movie
-import com.example.movieapp.navigation.Screen
+import com.example.movieapp.navigation.ScreenRoute
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch
@@ -70,14 +70,14 @@ fun HomeScreenAppBar(
                 },
             ) {
                 DropdownMenuItem(onClick = {
-                    navController.navigate(Screen.AddMovieScreen.route)
+                    navController.navigate(ScreenRoute.AddMovieScreenRoute.route)
                 }) {
                     Icon(imageVector = Icons.Default.Add, contentDescription = "Add Movie")
                     Spacer(modifier = Modifier.width(5.dp))
                     Text("Add Movie")
                 }
                 DropdownMenuItem(onClick = {
-                    navController.navigate(Screen.FavoriteScreen.route)
+                    navController.navigate(ScreenRoute.FavoriteScreenRoute.route)
                 }) {
                     Icon(imageVector = Icons.Default.Favorite, contentDescription = "Favorites")
                     Spacer(modifier = Modifier.width(5.dp))
@@ -122,7 +122,7 @@ fun MovieList(
                     }
                 },
                 onItemClick = { movieId ->
-                    navController.navigate("${Screen.DetailScreen.route}/$movieId")
+                    navController.navigate("${ScreenRoute.DetailScreenRoute.route}/$movieId")
                 }
             )
         }

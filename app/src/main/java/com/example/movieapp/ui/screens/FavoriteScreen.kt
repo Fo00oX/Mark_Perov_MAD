@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.ui.components.MovieCard
 import com.example.movieapp.ui.components.SimpleAppBar
-import com.example.movieapp.navigation.Screen
+import com.example.movieapp.navigation.ScreenRoute
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch
@@ -58,7 +58,7 @@ fun FavoriteScreen(
                         }
                     },
                     onItemClick = { movieId ->
-                        navController.navigate("${Screen.DetailScreen.route}/$movieId")
+                        navController.navigate("${ScreenRoute.DetailScreenRoute.route}/$movieId")
                     }
                 )
             }
