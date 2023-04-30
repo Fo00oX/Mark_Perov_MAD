@@ -77,7 +77,7 @@ public final class MovieDatabase_Impl extends MovieDatabase {
             }
 
             /** This method validates the schema of the SQLite database to
-             * ensure it matches the expected schema defined in the TableInfo objects.
+              ensure it matches the expected schema defined in the TableInfo objects.
              */
             @NonNull
             @Override

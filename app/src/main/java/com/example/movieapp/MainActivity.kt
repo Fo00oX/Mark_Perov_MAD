@@ -23,8 +23,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-// MainActivity is the main entry point of the application, which handles
-// setting up the required view models and navigation.
+/**
+
+The MainActivity is the main entry point of the application.
+It sets up and initializes the view models and navigation controller,
+
+and sets up the navigation routes.
+ */
 class MainActivity : ComponentActivity() {
     // Variables to store instances of required view models and navigation controller
     lateinit var navController: NavHostController
@@ -33,10 +38,14 @@ class MainActivity : ComponentActivity() {
     lateinit var detailsViewModel: DetailsViewModel
     lateinit var addMovieViewModel: AddMovieViewModel
 
-    /** This function is called when the activity is created.
-     * It sets the content view, initializes the view models and navigation,
-     * and sets up the navigation routes.
-     * **/
+    /**
+
+    This function is called when the activity is created.
+
+    It sets the content view, initializes the view models and navigation, and sets up the [navigation] routes.
+
+     savedInstanceState A bundle containing the activity's previously saved state, or null if there is no saved state.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -60,6 +69,10 @@ class MainActivity : ComponentActivity() {
         }
         //reseedDatabase()
     }
+    /**
+
+    Reseed the database for debugging/testing purposes.
+     */
     private fun reseedDatabase() {
         val movieDatabase = MovieDatabase.getDatabase(this)
         val movieDatabaseCallback = MovieDatabaseCallback(this)

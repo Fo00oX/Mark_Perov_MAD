@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-/** FavoritesViewModel is responsible for handling favorite movie data and actions.
- * It fetches favorite movies from the repository and provides it as a state flow.
+/** [FavoritesViewModel] is responsible for handling favorite movie data and actions.
+ * It fetches favorite movies from the [repository] and provides it as a state flow.
  *
  */
 class FavoritesViewModel(private val repository: MovieRepository) : ViewModel() {

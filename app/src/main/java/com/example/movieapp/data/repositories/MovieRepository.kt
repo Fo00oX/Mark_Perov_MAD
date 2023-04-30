@@ -3,7 +3,14 @@ package com.example.movieapp.data.repositories
 import com.example.movieapp.data.MovieDao
 import com.example.movieapp.data.models.Movie
 
+/**
 
+A repository class that handles data operations for the Movie entity.
+
+It provides an abstraction over the underlying data access layer, which is a [MovieDao].
+
+[movieDao] The Data Access Object (DAO) for the Movie entity.
+ */
 class MovieRepository(private val movieDao: MovieDao) {
 
     suspend fun add(movie: Movie) = movieDao.add(movie)

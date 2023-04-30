@@ -24,6 +24,16 @@ import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch
 
+/**
+
+A composable function that displays the user's favorite movies list.
+
+ [movieViewModel] The view model for handling movies data.
+
+ [favoritesViewModel] The view model for handling favorite movies data.
+
+ [navController] The navigation controller used to navigate between screens.
+ */
 @Composable
 fun FavoriteScreen(
     movieViewModel: MovieViewModel,

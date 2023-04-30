@@ -7,6 +7,12 @@ import com.example.movieapp.data.models.Movie
 import com.example.movieapp.data.repositories.MovieRepository
 import kotlinx.coroutines.launch
 
+/**
+
+ViewModel for AddMovieScreen. Handles adding new movies to the database
+
+repository The MovieRepository instance that handles data operations on the database
+ */
 class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     init {
@@ -14,11 +20,18 @@ class AddMovieViewModel(private val repository: MovieRepository) : ViewModel() {
         }
     }
 
+    /**
+
+    Represents a selectable list item for the genre field in the AddMovieScreen.
+     */
     data class ListItemSelectable(
         val title: Genre,
         val isSelected: Boolean
     )
 
+    /**
+    Determines if a movie is valid.
+     */
     fun isValidMovie(title: String,
                      year: String,
                      genres: String,

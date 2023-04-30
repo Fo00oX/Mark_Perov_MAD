@@ -9,12 +9,22 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+
+A [RoomDatabase.Callback] class that seeds the [MovieDatabase] with initial data when it is created.
+@
+@property context The application context.
+ */
 class MovieDatabaseCallback(private val context: Context) : RoomDatabase.Callback() {
 
     private lateinit var database: MovieDatabase
     private lateinit var movieDao: MovieDao
     private lateinit var repository: MovieRepository
 
+    /**
+    Called when the [MovieDatabase] is created.
+    @param db The [SupportSQLiteDatabase] instance.
+     */
     override fun onCreate(db: SupportSQLiteDatabase) {
         super.onCreate(db)
         CoroutineScope(Dispatchers.IO).launch {

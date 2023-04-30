@@ -9,6 +9,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+/**
+
+The [DetailsViewModel] class is responsible for managing the data related to a specific [movie]'s details.
+
+It holds the state of the selected movie and provides a function to retrieve the movie from the repository.
+
+@param [repository] is used to get the movie details
+ */
 class DetailsViewModel(private val repository: MovieRepository) : ViewModel() {
 
     private var _movie = MutableStateFlow(Movie())

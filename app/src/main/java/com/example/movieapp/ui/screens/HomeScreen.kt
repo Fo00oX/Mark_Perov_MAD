@@ -41,6 +41,10 @@ import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 import kotlinx.coroutines.launch
 
+/**
+
+[defaultMovie] is a default value for the Movie class, with predefined values for its attributes.
+ */
 val defaultMovie = Movie(
     title = "Avatar",
     year = "2009",
@@ -57,6 +61,13 @@ val defaultMovie = Movie(
         "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"),
     rating = 7.9f)
 
+/**
+
+[HomeScreen] is a composable function that displays a list of movies and a top bar with options.
+ [movieViewModel] an instance of MovieViewModel.
+ [favoritesViewModel] an instance of FavoritesViewModel.
+ [navController] a NavHostController instance used for navigation between different screens.
+ */
 @Composable
 fun HomeScreen(
     movieViewModel: MovieViewModel,
@@ -69,6 +80,16 @@ fun HomeScreen(
     }
 }
 
+/**
+
+[HomeScreenAppBar] is a composable function that displays the top bar for the [HomeScreen].
+
+ [title] the title of the top bar.
+
+ [movieViewModel] an instance of MovieViewModel.
+
+ [navController] a NavHostController instance used for navigation between different screens.
+ */
 @Composable
 fun HomeScreenAppBar(
     title: String = "Movies",
@@ -132,6 +153,16 @@ fun HomeScreenAppBar(
     }
 }
 
+/**
+
+A Composable function that displays a list of movies in a lazy column.
+
+ [movieViewModel] The ViewModel used to interact with the movies data.
+
+ [favoritesViewModel] The ViewModel used to interact with the favorites data.
+
+ [navController] The navigation controller used to navigate to the details screen.
+ */
 @Composable
 fun MovieList(
     movieViewModel: MovieViewModel,

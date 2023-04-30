@@ -1,4 +1,4 @@
-package com.example.movieapp.ui.theme.screens
+package com.example.movieapp.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells

@@ -10,12 +10,26 @@ import androidx.navigation.navArgument
 import com.example.movieapp.ui.screens.DetailScreen
 import com.example.movieapp.ui.screens.FavoriteScreen
 import com.example.movieapp.ui.screens.HomeScreen
-import com.example.movieapp.ui.theme.screens.AddMovieScreen
+import com.example.movieapp.ui.screens.AddMovieScreen
 import com.example.movieapp.views.AddMovieViewModel
 import com.example.movieapp.views.DetailsViewModel
 import com.example.movieapp.views.FavoritesViewModel
 import com.example.movieapp.views.MovieViewModel
 
+/**
+
+Composable function that sets up the navigation for the app using Jetpack Navigation.
+
+@param [movieViewModel] View model for the movie screen.
+
+@param [favoritesViewModel] View model for the favorites screen.
+
+@param [detailsViewModel] View model for the details screen.
+
+@param [addMovieViewModel] View model for the add movie screen.
+
+@param [navController] Navigation controller to handle the navigation.
+ */
 @Composable
 fun SetupNavigation(
     movieViewModel: MovieViewModel,

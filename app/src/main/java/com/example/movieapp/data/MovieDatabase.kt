@@ -23,6 +23,12 @@ abstract class MovieDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: MovieDatabase? = null
 
+        /**
+         * Gets the [MovieDatabase] instance or creates one if it doesn't exist.
+         *
+         *  context The application context.
+         *   The [MovieDatabase] instance.
+         */
         fun getDatabase(context: Context): MovieDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(

@@ -10,8 +10,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 /**
- * MovieViewModel is responsible for handling movie data and actions.It
- * fetches movies from the repository and provides it as a state flow.
+ * [MovieViewModel] is responsible for handling movie data and actions.It
+ * fetches movies from the [repository] and provides it as a state flow.
  *
  */
 class MovieViewModel(private val repository: MovieRepository) : ViewModel() {

@@ -20,7 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.navigation.ScreenRoute
 
+/**
 
+A composable function that displays a simple app bar with a title and a back button that navigates to the previous screen.
+ [title] The title to be displayed on the app bar.
+ [navController] The navigation controller used to navigate to the previous screen when the back button is clicked.
+ */
 @Composable
 fun SimpleAppBar(title: String = "Movies", navController: NavHostController) {
     Row(modifier = Modifier

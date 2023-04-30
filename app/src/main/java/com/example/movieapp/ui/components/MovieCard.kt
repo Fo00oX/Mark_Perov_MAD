@@ -47,6 +47,32 @@ import coil.request.ImageRequest
 import com.example.movieapp.data.models.Movie
 import com.example.movieapp.ui.screens.defaultMovie
 
+/**
+
+A composable that represents a card view for displaying movie information including title, director, year,
+
+genre, actors, plot, images, rating, and favorite status. By default, the movie information is set to a default
+
+movie. Clicking on the card navigates to the details page for that movie.
+
+ movie the [Movie] object containing the information to be displayed on the card view
+
+ onFavoriteClick a callback function that is called when the favorite button is clicked. Updates the favorite
+
+status of the movie and the [FavoritesViewModel].
+
+ onItemClick a callback function that is called when the card view is clicked. Navigates to the details page
+
+for the movie.
+
+ [onDeleteClick] a callback function that is called when the delete button is clicked. Deletes the movie from
+
+ movieViewModel and the FavoriteViewModel.
+
+ [showDeleteIcon] a boolean indicating whether the delete icon should be displayed on the card view. Defaults
+
+to true.
+ */
 @Composable
 fun MovieCard(
     movie: Movie = defaultMovie,
