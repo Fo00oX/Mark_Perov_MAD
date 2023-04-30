@@ -23,14 +23,20 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+// MainActivity is the main entry point of the application, which handles
+// setting up the required view models and navigation.
 class MainActivity : ComponentActivity() {
-
+    // Variables to store instances of required view models and navigation controller
     lateinit var navController: NavHostController
     lateinit var movieViewModel: MovieViewModel
     lateinit var favoritesViewModel: FavoritesViewModel
     lateinit var detailsViewModel: DetailsViewModel
     lateinit var addMovieViewModel: AddMovieViewModel
 
+    /** This function is called when the activity is created.
+     * It sets the content view, initializes the view models and navigation,
+     * and sets up the navigation routes.
+     * **/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

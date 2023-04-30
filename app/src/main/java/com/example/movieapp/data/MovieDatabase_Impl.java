@@ -18,8 +18,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@SuppressWarnings({"unchecked", "deprecation"})
+/** This class is the implementation of the MovieDatabase,
+ * which extends the RoomDatabase class and provides instances of the DAOs.
+ **/
+@SuppressWarnings({"deprecation"})
 public final class MovieDatabase_Impl extends MovieDatabase {
+    // This method creates the SQLiteOpenHelper used to manage the SQLite database.
     private volatile MovieDao _movieDao;
 
     @NonNull
@@ -72,6 +76,9 @@ public final class MovieDatabase_Impl extends MovieDatabase {
             public void onPostMigrate(@NonNull SupportSQLiteDatabase _db) {
             }
 
+            /** This method validates the schema of the SQLite database to
+             * ensure it matches the expected schema defined in the TableInfo objects.
+             */
             @NonNull
             @Override
             public RoomOpenHelper.ValidationResult onValidateSchema(@NonNull SupportSQLiteDatabase _db) {
@@ -144,6 +151,7 @@ public final class MovieDatabase_Impl extends MovieDatabase {
         return new HashSet<>();
     }
 
+    // This method returns a list of auto migrations based on the provided autoMigrationSpecsMap.
     @NonNull
     @Override
     public List<Migration> getAutoMigrations(
