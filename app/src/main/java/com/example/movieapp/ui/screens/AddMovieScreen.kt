@@ -16,10 +16,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.movieapp.R
-import com.example.movieapp.ui.components.SimpleAppBar
 import com.example.movieapp.data.models.Genre
 import com.example.movieapp.data.models.Movie
 import com.example.movieapp.navigation.ScreenRoute
+import com.example.movieapp.ui.components.SimpleAppBar
 import com.example.movieapp.views.AddMovieViewModel
 import kotlinx.coroutines.launch
 

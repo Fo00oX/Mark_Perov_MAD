@@ -1,12 +1,12 @@
 package com.example.movieapp.utils
 
 import android.content.Context
-import com.example.movieapp.views.MovieViewModelFactory
 import com.example.movieapp.data.MovieDatabase
 import com.example.movieapp.data.repositories.MovieRepository
 import com.example.movieapp.views.AddMovieViewModelFactory
 import com.example.movieapp.views.DetailsViewModelFactory
 import com.example.movieapp.views.FavoritesViewModelFactory
+import com.example.movieapp.views.MovieViewModelFactory
 
 object InjectorUtils {
 
