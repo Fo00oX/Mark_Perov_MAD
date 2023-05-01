@@ -1,6 +1,7 @@
 package com.example.movieapp
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
@@ -68,6 +69,34 @@ class MainActivity : ComponentActivity() {
             }
         }
         //reseedDatabase()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("MainActivity", "onStart")
+    }
+
+    /** onResume(): called when the activity is becoming visible to the user **/
+    override fun onResume() {
+        super.onResume()
+        Log.d("MainActivity", "onResume")
+    }
+    /** onPause(): called when the activity is going into the background, but has not been killed*/
+    override fun onPause() {
+    super.onPause()
+    Log.d("MainActivity", "onPause")
+    }
+
+    /** onStop(): called when the activity is no longer visible to the user */
+    override fun onStop() {
+        super.onStop()
+        Log.d("MainActivity", "onStop")
+    }
+
+    /** onDestroy(): called when the activity is being destroyed */
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("MainActivity", "onDestroy")
     }
     /**
 

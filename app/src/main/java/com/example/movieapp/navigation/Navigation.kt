@@ -39,7 +39,9 @@ fun SetupNavigation(
     addMovieViewModel: AddMovieViewModel,
     navController: NavHostController,
 ) {
-    NavHost(navController = navController, ScreenRoute.HomeScreenRoute.route) {
+    NavHost(
+        navController = navController,
+        ScreenRoute.HomeScreenRoute.route) {
         composable(ScreenRoute.HomeScreenRoute.route) {
             HomeScreen(movieViewModel, favoritesViewModel, navController)
         }
