@@ -18,17 +18,18 @@ import com.example.movieapp.views.MovieViewModel
 
 /**
 
-Composable function that sets up the navigation for the app using Jetpack Navigation.
+A composable function that sets up the navigation for the app using Jetpack Navigation. It defines the navigation
+routes for different screens and manages the navigation between these screens.
 
- [movieViewModel] View model for the movie screen.
+ [movieViewModel] The [MovieViewModel] instance to manage the movie screen data and interactions.
 
- [favoritesViewModel] View model for the favorites screen.
+ [favoritesViewModel] The [FavoritesViewModel] instance to manage the favorites screen data and interactions.
 
- [detailsViewModel] View model for the details screen.
+ [detailsViewModel] The [DetailsViewModel] instance to manage the details screen data and interactions.
 
- [addMovieViewModel] View model for the add movie screen.
+ [addMovieViewModel] The [AddMovieViewModel] instance to manage the add movie screen data and interactions.
 
- [navController] Navigation controller to handle the navigation.
+ [navController] The [NavHostController] instance to handle the navigation between different screens.
  */
 @Composable
 fun SetupNavigation(
@@ -42,7 +43,11 @@ fun SetupNavigation(
         composable(ScreenRoute.HomeScreenRoute.route) {
             HomeScreen(movieViewModel, favoritesViewModel, navController)
         }
-
+         //
+         //Inside the lambda, it first attempts to get the movieId argument from the backStackEntry's arguments.
+         //If the movieId is successfully retrieved (i.e., not null),
+         //it calls the DetailScreen composable function with parameters
+         //
         composable(
             "${ScreenRoute.DetailScreenRoute.route}/{movieId}",
             arguments = listOf(navArgument("movieId") {
