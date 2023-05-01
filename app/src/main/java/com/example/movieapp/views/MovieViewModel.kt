@@ -37,12 +37,12 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
         fetchMovies()
     }
 
-    suspend fun deleteMovie(movie: Movie) {
+    suspend fun deleteMovie(movie: Movie) { //can be blocking, only from a coroutine callable
         repository.delete(movie)
         fetchMovies()
     }
 
-    suspend fun deleteAllMovies() {
+    suspend fun deleteAllMovies() { //can be blocking, only from a coroutine callable
         repository.deleteAll()
         fetchMovies()
     }

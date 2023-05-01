@@ -30,7 +30,7 @@ class FavoritesViewModel(private val repository: MovieRepository) : ViewModel() 
         return repository.getAllFavorites()
     }
 
-    suspend fun updateFavorites(movie: Movie) {
+    suspend fun updateFavorites(movie: Movie) { //can be blocking, only from a coroutine callable
         movie.isFavorite = !movie.isFavorite
         repository.update(movie)
     }

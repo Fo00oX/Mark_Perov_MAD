@@ -6,8 +6,17 @@ import kotlinx.coroutines.flow.Flow
 
 /**Android Room Persistence Library annotation, which tells Room to generate an implementation of
  the DAO at compile time. The MovieDao interface defines methods for various database operations
-  such as [add], [update], [delete], and querying movies like: [getAllMovies], [getAllFavorites],
-[getMovieById], [deleteAll].
+  such as [add], [update], [delete].
+
+And querying movies like:
+
+[getAllMovies],
+
+[getAllFavorites],
+
+[getMovieById],
+
+[deleteAll].
 */
 @Dao
 interface MovieDao {

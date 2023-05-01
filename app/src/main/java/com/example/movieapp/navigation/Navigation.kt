@@ -20,15 +20,15 @@ import com.example.movieapp.views.MovieViewModel
 
 Composable function that sets up the navigation for the app using Jetpack Navigation.
 
-@param [movieViewModel] View model for the movie screen.
+ [movieViewModel] View model for the movie screen.
 
-@param [favoritesViewModel] View model for the favorites screen.
+ [favoritesViewModel] View model for the favorites screen.
 
-@param [detailsViewModel] View model for the details screen.
+ [detailsViewModel] View model for the details screen.
 
-@param [addMovieViewModel] View model for the add movie screen.
+ [addMovieViewModel] View model for the add movie screen.
 
-@param [navController] Navigation controller to handle the navigation.
+ [navController] Navigation controller to handle the navigation.
  */
 @Composable
 fun SetupNavigation(
