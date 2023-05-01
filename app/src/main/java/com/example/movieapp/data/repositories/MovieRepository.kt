@@ -10,6 +10,8 @@ A repository class that handles data operations for the Movie entity.
 It provides an abstraction over the underlying data access layer, which is a [MovieDao].
 
 [movieDao] The Data Access Object (DAO) for the Movie entity.
+
+ fungiert als schnittstelle. Data exposed should be immutable
  */
 class MovieRepository(private val movieDao: MovieDao) {
 

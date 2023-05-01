@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 /**
 
 A [RoomDatabase.Callback] class that seeds the [MovieDatabase] with initial data when it is created.
-@
-@property context The application context.
+
+ context The application context.
  */
 class MovieDatabaseCallback(private val context: Context) : RoomDatabase.Callback() {
 
